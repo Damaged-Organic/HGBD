@@ -1,0 +1,17 @@
+*.pyc
+*.swo
+*.swp
+*.swn
+
+__pycache__/
+
+logs/
+static/
+uploads/
+
+*/*/settings/production.py
+
+*~
+
+node_modules/
+jspm_packages/
