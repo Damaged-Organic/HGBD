@@ -1,0 +1,27 @@
+# hgbd_project/hgbd/metadata/fixtures/initial_data.yaml
+
+# Metadata
+
+- model: metadata.Metadata
+  pk: 1
+  fields:
+    url_name: index
+    title_uk: Головна
+    description_uk: Опис
+    robots: index,follow,archive
+
+- model: metadata.Metadata
+  pk: 2
+  fields:
+    url_name: service
+    title_uk: Сервіс
+    description_uk: Опис
+    robots: index,follow,archive
+
+- model: metadata.Metadata
+  pk: 3
+  fields:
+    url_name: cooperation
+    title_uk: Співпраця
+    description_uk: Опис
+    robots: index,follow,archive

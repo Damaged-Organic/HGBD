@@ -1,0 +1,23 @@
+{# hgbd_project/hgbd/website/templates/website/service.html #}
+{% extends 'layout.html' %}
+
+{% load staticfiles i18n website_helpers %}
+
+{% block title %}
+    {{ METADATA.title }} | {% trans 'HG Business Development' noop %}
+{% endblock %}
+
+{% block meta %}
+    {{ block.super }}
+    <meta name="Description" content="{{ METADATA.description }}">
+    <meta name=“robots” content="{{ METADATA.robots }}">
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

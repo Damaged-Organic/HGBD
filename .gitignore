@@ -3,6 +3,8 @@
 *.swp
 *.swn
 
+*.mo
+
 __pycache__/
 
 logs/
