@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nested_admin',
     'metadata.apps.MetadataConfig',
     'website.apps.WebsiteConfig',
 ]
@@ -29,7 +30,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'solid_i18n.middleware.SolidLocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'hgbd.urls'
@@ -126,5 +126,5 @@ X_FRAME_OPTIONS = 'DENY'
 # Socials
 
 SOCIALS = {
-    'facebook': '',
+    # 'facebook': '',
 }

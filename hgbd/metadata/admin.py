@@ -18,7 +18,7 @@ class MetadataAdmin(DefaultOrderingModelAdmin):
         (None, {
             'fields': ('url_name', 'robots',)
         }),
-        ('Украинский', {
+        ('Локалізована інформація', {
             'fields': ('title_uk', 'description_uk',)
         }),
     )

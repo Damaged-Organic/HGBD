@@ -21,6 +21,10 @@ class ForbidAddMixin():
         return False
 
 
+class ContentBlockMixin(ForbidDeleteMixin, ForbidAddMixin):
+    exclude = ('name',)
+
+
 # Admin site
 
 class DefaultOrderingModelAdmin(admin.ModelAdmin):

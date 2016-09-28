@@ -1,0 +1,501 @@
+# Content
+
+-   model: website.IntroContent
+    pk: 1
+    fields:
+        name: intro
+        headline_uk: Ефективні рішення консалтингу високі результати бізнесу
+
+-   model: website.AboutContent
+    pk: 1
+    fields:
+        name: about
+        label_uk: Про компанію
+        title_uk: HG Business Development
+        text_uk: |
+            Інноваційна консалтингова компанія, яка допомагає досягати конкретних результатів у бізнесі та утримувати їх на довгі роки.
+            Ми співпрацюємо з нашими клієнтами, щоб вирішити їх найбільш важливі та складні проблеми, роблячи їх місію нашою місією.
+
+-   model: website.BenefitsContent
+    pk: 1
+    fields:
+        name: benefits
+        title_uk: Чим ми відрізняємося?
+
+-   model: website.ServicesContent
+    pk: 1
+    fields:
+        name: services
+        label_uk: Наші сервіси
+        title_uk: Спектр пропозицій саме для вас
+        text_uk: |
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pellentesque nulla erat, auctor luctus enim fringilla nec praesent feugiat vehicula porttitor ouisque pulvinar urna quis condimentum lobortis.
+
+-   model: website.TeamContent
+    pk: 1
+    fields:
+        name: team
+        label_uk: Наша команда
+        title_uk: Люди, які знають свою справу
+        text_uk: |
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pellentesque nulla erat, auctor luctus enim fringilla nec praesent feugiat vehicula porttitor ouisque pulvinar urna quis condimentum lobortis.
+
+-   model: website.GetInTouchContent
+    pk: 1
+    fields:
+        name: get_in_touch
+        title_uk: Ми завжди відкриті до нових ідей та проектів
+        text_uk: |
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales est sed urna dictum, in auctor lacus interdum nullam sed eros non erat rhoncus molestie vitae vel tortor. Nunc nec fermentum purus. Nunc vulputate tincidunt elit vel porttitor
+        link_title_uk: Написати нам
+
+# Common
+
+-   model: website.Number
+    pk: 1
+    fields:
+        quantity: 15
+        description_uk: кваліфікованих працівників до ваших послуг
+
+-   model: website.Number
+    pk: 2
+    fields:
+        quantity: 25
+        description_uk: успішних проектів в Україні та закордоном
+
+-   model: website.Benefit
+    pk: 1
+    fields:
+        text_uk: Професійний підхід та практичний досвід компанії та її працівників
+
+-   model: website.Benefit
+    pk: 2
+    fields:
+        text_uk: Конфіденційність у відносинах з клієнтом та гарантіїї максимального забезпечення його інтересів
+
+-   model: website.Benefit
+    pk: 3
+    fields:
+        text_uk: Оперативність, прагматичність в прийнятті рішеннь та наданні послуг клієнту
+
+-   model: website.Benefit
+    pk: 4
+    fields:
+        text_uk: Доступність і ринкова вартість послуг
+
+-   model: website.Benefit
+    pk: 5
+    fields:
+        text_uk: Індивідуальний підхід до клієнта та подальше партнерство та співпраця
+
+-   model: website.Contact
+    pk: 1
+    fields:
+        phone: +38 (044) 290-40-73
+        email: businessdevelopment@gmail.com
+        address_uk: Україна, м. Київ, вул. Володимирська 38, 7 поверх, офіс 3
+
+# Employee
+
+-   model: website.Employee
+    pk: 1
+    fields:
+        position_uk: '-'
+        name_uk: Наталя
+        surname_uk: Башинська
+        photo: '-'
+
+-   model: website.Employee
+    pk: 2
+    fields:
+        position_uk: '-'
+        name_uk: Тетяна
+        surname_uk: Лісовська
+        photo: '-'
+
+-   model: website.Employee
+    pk: 3
+    fields:
+        position_uk: '-'
+        name_uk: Олег
+        surname_uk: Стус
+        photo: '-'
+
+-   model: website.Employee
+    pk: 4
+    fields:
+        position_uk: '-'
+        name_uk: Юрій
+        surname_uk: Яценюк
+        photo: '-'
+
+-   model: website.Employee
+    pk: 5
+    fields:
+        position_uk: '-'
+        name_uk: Олексій
+        surname_uk: Олексій
+        photo: '-'
+
+-   model: website.Employee
+    pk: 6
+    fields:
+        position_uk: '-'
+        name_uk: Володимир
+        surname_uk: Богонос
+        photo: '-'
+
+-   model: website.Employee
+    pk: 7
+    fields:
+        position_uk: '-'
+        name_uk: Ірина
+        surname_uk: Тестова
+        photo: '-'
+
+-   model: website.Employee
+    pk: 8
+    fields:
+        position_uk: '-'
+        name_uk: Іван
+        surname_uk: Цецик
+        photo: '-'
+
+# Service
+
+# 1
+
+-   model: website.Service
+    pk: 1
+    fields:
+        title_uk: Залучення коштів під аграрні розписки
+        headline_uk: Залучення інвестицій в аграрний сектор держави із застосуванням нового механізму аграрних розписок
+        description_uk: |
+            Консалтингова компанія «ЕйджДжи Бізнес Девелопмент» надає повний спектр правових, фінансових та інших аналітичних послуг щодо залучення інвестицій в аграрному секторі нашої країни, в тому числі із використанням нового інноваційного механізму – аграрних розписок.
+        about_label_uk: Про розписки
+        about_description_uk: |
+            Консалтингова компанія «ЕйджДжи Бізнес Девелопмент» надає повний спектр правових, фінансових та інших аналітичних послуг щодо залучення інвестицій в аграрному секторі нашої країни, в тому числі із використанням нового інноваційного механізму – аграрних розписок.
+            Ми забезпечуємо повний консалтинг і супровід усіх в першу чергу юридичних та інших необхідних організаційних заходів, що пов’язані з обігом аграрних розписок та їх застосуванні на практиці.
+            Наша Компанія є активним учасником та професійним радником з правових та інших питань в аграрному секторі держави, яка завжди якісно і своєчасно забезпечить Вам належний і високий професійний рівень надання послуг за Вашим зверненням чи замовленням.
+        hint_title_uk: Аграрна розписка
+        hint_description_uk: |
+            Це товаророзпорядчий документ, що фіксує безумовне зобов’язання боржника, яке забезпечується заставою, здійснити поставку сільськогосподарської продукції або сплатити грошові кошти на визначених у ньому умовах
+        image_main: '-'
+        image_list: '-'
+
+# Service 1 Service List 1
+
+-   model: website.ServiceList
+    pk: 1
+    fields:
+        service: 1
+        label_uk: Послуги
+        title_uk: Послуги в сфері аграрних розписок
+
+-   model: website.ServiceListItem
+    pk: 1
+    fields:
+        service_list: 1
+        text_uk: |
+            Юридичний, фінансовий та організаційний супровід операцій, повʼязаних із застосуванням аграрних розписок
+
+-   model: website.ServiceListItem
+    pk: 2
+    fields:
+        service_list: 1
+        text_uk: |
+            Фінансовий консалтинг та правовий супровід усіх питань, повʼязаних з аграрними та іншими напрямками діяльності клієнтів
+
+-   model: website.ServiceListItem
+    pk: 3
+    fields:
+        service_list: 1
+        text_uk: |
+            Залучення інвестицій в аграрну сферу та професійний супровід усіх процесів, повʼязаних з можливими механізмами фінансування
+
+# Service 1 Service List 2
+
+-   model: website.ServiceList
+    pk: 2
+    fields:
+        service: 1
+        label_uk: Переваги
+        title_uk: Переваги аграрних розписок
+
+-   model: website.ServiceListItem
+    pk: 4
+    fields:
+        service_list: 2
+        text_uk: |
+            Є ефективним механізмом залучення як правило коротко- та середньострокового інвестування в сільське господарство
+
+-   model: website.ServiceListItem
+    pk: 5
+    fields:
+        service_list: 2
+        text_uk: |
+            Простота і доступність оформлення процесів фінансового інвестування, із залученням професійних нотаріусів (підключених до відповідного реєстру)
+
+-   model: website.ServiceListItem
+    pk: 6
+    fields:
+        service_list: 2
+        text_uk: |
+            Можливість створення кредитних історій аграріїв-позичальників та подальший їх моніторинг в загальнодоступній мережі
+
+-   model: website.ServiceListItem
+    pk: 7
+    fields:
+        service_list: 2
+        text_uk: |
+            Швидкий та позасудовий спосіб звернення стягнення на предмет застави
+
+-   model: website.ServiceListItem
+    pk: 8
+    fields:
+        service_list: 2
+        text_uk: |
+            Свобода вибору інвесторів чи постачальників, які стануть в подальшому добросовісними кредиторами агровиробника
+
+-   model: website.ServiceListItem
+    pk: 9
+    fields:
+        service_list: 2
+        text_uk: |
+            Підвищення якісних показників виробничих процесів аграрників та зниження потенційних ризиків щодо невиконання взятих ними на себе зобовʼязань за аграрними розписками
+
+# Service 1 Service List 3
+
+-   model: website.ServiceList
+    pk: 3
+    fields:
+        service: 1
+        label_uk: Особливості
+        title_uk: Особливості застосування аграрних розписок
+
+-   model: website.ServiceListItem
+    pk: 10
+    fields:
+        service_list: 3
+        text_uk: |
+            Аграрна розписка – це товаророзпорядчий документ, що фіксує безумовне зобов’язання боржника, яке забезпечується заставою, здійснити поставку сільськогосподарської продукції або сплатити грошові кошти на визначених у ньому умовах
+
+-   model: website.ServiceListItem
+    pk: 11
+    fields:
+        service_list: 3
+        text_uk: |
+            Аграрна розписка це свого роду новий інноваційний спосіб залучення фінансування агровиробників під заставу майбутнього урожаю. Обіг аграрних розписок в Україні регулюється Законом України "Про аграрні розписки"
+
+-   model: website.ServiceListItem
+    pk: 12
+    fields:
+        service_list: 3
+        text_uk: |
+            Аграрна розписка не є цінним папером, а тому, її використання в господарській діяльності не обмежено і не регулюється законодавством про розміщення та обіг цінних паперів
+
+-   model: website.ServiceListItem
+    pk: 13
+    fields:
+        service_list: 3
+        text_uk: |
+            Аграрна розписка підлягає обов’язковому нотаріальному посвідченню
+
+-   model: website.ServiceListItem
+    pk: 14
+    fields:
+        service_list: 3
+        text_uk: |
+            Інформація про забезпечувальні механізми по аграрній розписці (наприклад, застава урожаю) – є публічною і відкритою
+
+-   model: website.ServiceListItem
+    pk: 15
+    fields:
+        service_list: 3
+        text_uk: |
+            За аграрною розпискою кредитор (інвестор) може надавати агровиробнику гроші та/або товар
+
+-   model: website.ServiceListItem
+    pk: 16
+    fields:
+        service_list: 3
+        text_uk: |
+            Боржник за аграрною розпискою, повинен бути законним володільцем землі сільськогосподарського призначення, що повинно підтверджуватися належними правовстановлюючими документами
+
+# Service 1 Service List 4
+
+-   model: website.ServiceList
+    pk: 4
+    fields:
+        service: 1
+        label_uk: Передумови
+        title_uk: Передумови введення механізму аграрних розписок
+
+-   model: website.ServiceListItem
+    pk: 17
+    fields:
+        service_list: 4
+        text_uk: |
+            Позитивний досвід застосування на практиці в Бразилії
+
+-   model: website.ServiceListItem
+    pk: 18
+    fields:
+        service_list: 4
+        text_uk: |
+            Постійна нагальність поповнення обігових коштів агровиробників та необхідність інвестицій в сільському господарстві.
+
+-   model: website.ServiceListItem
+    pk: 19
+    fields:
+        service_list: 4
+        text_uk: |
+            Сезонність виробничого процесу в сільському господарстві та певні коливання на фінансових і товарних ринках держави.
+
+-   model: website.ServiceListItem
+    pk: 20
+    fields:
+        service_list: 4
+        text_uk: |
+            Відсутність прозорості механізмів фінансування аграрного сектору до цього часу
+
+-   model: website.ServiceListItem
+    pk: 21
+    fields:
+        service_list: 4
+        text_uk: |
+            Суттєві ризики інвесторів та інших кредиторів щодо своєчасного і повного повернення коштів (товарів) у сфері аграрного виробництва
+
+-   model: website.ServiceListItem
+    pk: 22
+    fields:
+        service_list: 4
+        text_uk: |
+            Необхідність позитивної інвестиційної історії національних товаровиробників-аграріїв, з метою залучення більш значних обсягів інвестицій в аграрний сектор як на національному, так і на міжнародному рівні
+
+# Service 1 Service List 5
+
+-   model: website.ServiceList
+    pk: 5
+    fields:
+        service: 1
+        label_uk: Гарантії
+        title_uk: Гарантії та способи забезпечення за аграрними розписками
+
+-   model: website.ServiceListItem
+    pk: 23
+    fields:
+        service_list: 5
+        text_uk: |
+            Застава сільськогосподарської продукції та переважне право кредитора за аграрною розпискою на звернення стягнення на предмет застави
+
+-   model: website.ServiceListItem
+    pk: 24
+    fields:
+        service_list: 5
+        text_uk: |
+            Доступність моніторингу виробничих циклів і технологій майбутнього врожаю сільськогосподарської продукції
+
+-   model: website.ServiceListItem
+    pk: 25
+    fields:
+        service_list: 5
+        text_uk: |
+            Можливість відсторонення кредитором боржника від процесів вирощення продукції, самостійне дорощування її та контрольований збір власними силами
+
+-   model: website.ServiceListItem
+    pk: 26
+    fields:
+        service_list: 5
+        text_uk: |
+            Право кредитора на врожай наступного року, у разі втрати посівів поточного маркетингового року
+
+# 2
+
+-   model: website.Service
+    pk: 2
+    fields:
+        title_uk: Робота з проблемними активами
+        headline_uk: '-'
+        description_uk: |
+            -
+        about_label_uk: '-'
+        about_description_uk: |
+            -
+        hint_title_uk: '-'
+        hint_description_uk: |
+            -
+        image_main: '-'
+        image_list: '-'
+
+# 3
+
+-   model: website.Service
+    pk: 3
+    fields:
+        title_uk: Комплексна реалізація інвестиційних проектів
+        headline_uk: '-'
+        description_uk: |
+            -
+        about_label_uk: '-'
+        about_description_uk: |
+            -
+        hint_title_uk: '-'
+        hint_description_uk: |
+            -
+        image_main: '-'
+        image_list: '-'
+
+# 4
+
+-   model: website.Service
+    pk: 4
+    fields:
+        title_uk: Створення та оптимізація корпоративної структури бізнесу
+        headline_uk: '-'
+        description_uk: |
+            -
+        about_label_uk: '-'
+        about_description_uk: |
+            -
+        hint_title_uk: '-'
+        hint_description_uk: |
+            -
+        image_main: '-'
+        image_list: '-'
+
+# 5
+
+-   model: website.Service
+    pk: 5
+    fields:
+        title_uk: Створення та супровід міжнародних компаній
+        headline_uk: '-'
+        description_uk: |
+            -
+        about_label_uk: '-'
+        about_description_uk: |
+            -
+        hint_title_uk: '-'
+        hint_description_uk: |
+            -
+        image_main: '-'
+        image_list: '-'
+
+# 6
+
+-   model: website.Service
+    pk: 6
+    fields:
+        title_uk: Загальні
+        headline_uk: '-'
+        description_uk: |
+            -
+        about_label_uk: '-'
+        about_description_uk: |
+            -
+        hint_title_uk: '-'
+        hint_description_uk: |
+            -
+        image_main: '-'
+        image_list: '-'
