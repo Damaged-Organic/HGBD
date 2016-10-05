@@ -11,7 +11,7 @@ logs/
 static/
 uploads/
 
-*/*/settings/production.py
+*/*/settings/prod.py
 
 *~
 
