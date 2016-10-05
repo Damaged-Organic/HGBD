@@ -12,7 +12,7 @@ class MailerMixin():
 
     def send_email(self, subject, template, context):
         email_html = render_to_string(template, context)
-        email_from = 'HG Business Development Website <%s>' % self._email_from
+        email_from = 'HG BD Website <%s>' % self._email_from
 
         message = EmailMessage(
             subject, email_html, email_from, [self._email_to]

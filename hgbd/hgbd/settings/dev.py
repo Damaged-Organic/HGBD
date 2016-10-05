@@ -11,7 +11,7 @@ INSTALLED_APPS += [
     'debug_toolbar',
 ]
 
-# Databases
+# Database
 
 DATABASES['default'].update({
     'HOST':     'localhost',
@@ -19,3 +19,12 @@ DATABASES['default'].update({
     'USER':     'hgbd',
     'PASSWORD': 'hgbd',
 })
+
+# Email
+
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+
+EMAIL_FROM = ''
+EMAIL_TO = ''

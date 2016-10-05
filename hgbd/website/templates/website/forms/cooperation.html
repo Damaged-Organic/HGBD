@@ -1,0 +1,11 @@
+{# hgbd_project/hgbd/website/templates/website/forms/cooperation.html #}
+<form action="{% url 'website:cooperation_send' %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.name }}
+    {{ form.email }}
+    {{ form.message }}
+    {{ form.honeypot }}
+
+    <input type="submit" value="Submit" />
+</form>

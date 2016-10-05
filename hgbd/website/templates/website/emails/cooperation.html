@@ -1,0 +1,17 @@
+{# hgbd_project/hgbd/website/templates/website/emails/cooperation.html #}
+<h1>Нове повідомлення з сайту HG Business Development!</h1>
+<h4>
+    Дані користувача:
+</h4>
+<p>
+    {{ name }} ({{ email }})
+</p>
+<h4>
+    Повідомлення:
+</h4>
+<p>
+    {{ message }}
+</p>
+<small>
+    Повідомлення було надіслано {{ sent_at|date:'Y-m-d' }}, у {{ sent_at|date:'H:i' }}
+</small>
