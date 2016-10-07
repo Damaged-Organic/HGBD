@@ -3,23 +3,63 @@ import time
 import json
 
 from django.core.exceptions import PermissionDenied
-from django.utils.translation import ugettext as _
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.utils.translation import ugettext as _
+from django.shortcuts import (
+    render, get_object_or_404, get_list_or_404
+)
 
-from .forms import CooperationForm
 from .services.form_helpers import get_form_errors
+from .models import (
+    IntroContent, AboutContent, BenefitsContent,
+    ServicesContent, TeamContent, GetInTouchContent,
+    Number, Benefit, Contact,
+    Employee, Service
+)
+from .forms import CooperationForm
 
 
 def index(request):
-    return render(request, 'website/index.html')
+    ''' Index '''
+    content = {
+        block.get_template_block_name(): block for block in [
+            IntroContent.objects.first(),
+            AboutContent.objects.first(),
+            BenefitsContent.objects.first(),
+            ServicesContent.objects.first(),
+            TeamContent.objects.first(),
+            GetInTouchContent.objects.first(),
+        ]
+    }
+
+    numbers = get_list_or_404(Number)
+    benefits = get_list_or_404(Benefit)
+    contacts = get_object_or_404(Contact)
+
+    employees = get_list_or_404(Employee)
+    services = get_list_or_404(Service)
+
+    import pprint
+    pprint.pprint(vars(content['team']))
+
+    return render(request, 'website/index.html', {
+        'content': content,
+        'numbers': numbers,
+        'benefits': benefits,
+        'contacts': contacts,
+        'employees': employees,
+        'services': services,
+        'contacts': contacts
+    })
 
 
-def service(request, id, slug=None):
+def service(request, pk, slug=None):
+    ''' Service '''
     return render(request, 'website/service.html')
 
 
 def cooperation(request):
+    ''' Cooperation '''
     form = CooperationForm(request=request)
 
     return render(request, 'website/cooperation.html', {

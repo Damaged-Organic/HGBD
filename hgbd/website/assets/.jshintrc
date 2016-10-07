@@ -1,0 +1,7 @@
+{
+    "eqeqeq": true,
+    "esversion": 6,
+    "strict": true,
+    "undef": true,
+    "unused": true
+}

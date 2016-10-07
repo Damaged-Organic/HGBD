@@ -1,0 +1,1062 @@
+@import "./components/common.less";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#content{
+    & > .intro-container{
+        height: 100%;
+        position: relative;
+    }
+}
+
+.info-pane(@width: 56.25%){
+    width: @width;
+    height: auto;
+    padding: 120px 120px 120px 150px;
+    box-sizing: border-box;
+    background: @lightGrey;
+    position: relative;
+    z-index: 10;
+}
+.rotated-subtitle(@bg: @green){
+    display: block;
+    width: 240px;
+    height: 90px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: @bg;
+    transform-origin: 0% 0%;
+    transform: rotate(-90deg) translateX(-50%);
+    overflow: hidden;
+    h3{
+        color: @white;
+        text-align: center;
+        line-height: 90px;
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  intro start                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.intro-container{
+    background: @white url("@{images}/intro-bg.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    & > .inner{
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        padding: 0 6.25%;
+        box-sizing: border-box;
+        transform: translateY(-50%);
+        & > .square-holder{
+            .square(6.25%, @yellow);
+        }
+        h1{
+            font-size: 3.75em;
+            font-size: 3.125vw;
+            color: @white;
+            padding: 30px 0 0 8.928571428571429%;
+            & > span{
+                display: block;
+                font-weight: inherit;
+                font-size: inherit;
+                color: inherit;
+            }
+        }
+    }
+}
+#scroll-down-holder{
+    .square(12.5%, transparent);
+    position: absolute;
+    right: 6.25%;
+    bottom: 120px;
+    & > .square-holder{
+        .square(50%, @green);
+        position: absolute;
+        top: 0;
+        left: 0;
+        & > .arrow{
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid @white;
+        }
+    }
+    p{
+        display: inline-block;
+        position: absolute;
+        top: 52%;
+        left: 54%;
+        color: @white;
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  intro end                                 */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  about start                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.about-container{
+    .about-info-holder{
+        .info-pane;
+        width: 56.25%;
+        margin: -240px 0 0 12.5%;
+        .square-holder{
+            .square-fixed;
+            margin-top: 30px;
+        }
+        h2{ padding: 15px 0 30px 30px; }
+        & > .subtitle-holder{
+            .rotated-subtitle;
+        }
+        p{ padding-bottom: 15px; }
+    }
+    .benefits-holder{
+        width: 100%;
+        height: auto;
+        margin-top: -120px;
+        background: url("@{images}/home-about-bg.jpg") no-repeat 100% 0%;
+        background-size: 43.75% auto;
+        overflow: hidden;
+        & > .benefits{
+            width: 56.25%;
+            height: auto;
+            padding-left: 6.25%;
+            margin-top: 240px;
+            box-sizing: border-box;
+            overflow: hidden;
+            .item{
+                width: 44.44444444444444%;
+                height: auto;
+                float: left;
+                overflow: hidden;
+                .square-holder{
+                    .square(50%);
+                    .number{
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                        font-weight: 900;
+                        font-size: 5em;
+                        font-size: 4.166666666666667vw;
+                        color: @white;
+                    }
+                }
+                p{
+                    display: inline-block;
+                    padding: 15px 0 0 53.125%;
+                    overflow: hidden;
+                }
+            }
+        }
+        & > .distinction-holder{
+            width: 56.25%;
+            height: auto;
+            clear: both;
+            margin-top: 120px;
+            padding: 0 9.375%;
+            box-sizing: border-box;
+            overflow: hidden;
+            .square-holder{
+                .square-fixed(@green);
+            }
+            h3{
+                padding: 15px 0 0 30px;
+            }
+            ul{
+                display: block;
+                width: 100%;
+                height: auto;
+                margin-top: 30px;
+                overflow: hidden;
+                li{
+                    display: block;
+                    width: 100%;
+                    position: relative;
+                    height: auto;
+                    margin-bottom: 15px;
+                    overflow: hidden;
+                    &:last-child{ margin-bottom: 0; }
+                    & > span{
+                        display: block;
+                        width: 15px;
+                        height: auto;
+                        position: absolute;
+                        top: 1px;
+                        left: 0;
+                        text-align: center;
+                        font-size: .875em;
+                    }
+                    & > p{
+                        font-size: 1em;
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  about end                                 */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  services start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.services-container{
+    padding-top: 120px;
+    .service-info-holder{
+        .info-pane(62.5%);
+        .square-holder{
+            .square-fixed;
+            margin-top: 30px;
+        }
+        h2{ padding: 15px 0 30px 30px; }
+        & > .subtitle-holder{
+            .rotated-subtitle(@yellow);
+        }
+    }
+    & > .services{
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 10;
+        margin-top: -90px;
+        padding: 0 12.5% 60px 12.5%;
+        box-sizing: border-box;
+        overflow: hidden;
+        .item-holder{
+            width: 50%;
+            height: 0;
+            float: left;
+            padding-top: 25%;
+            position: relative;
+            background: transparent;
+            overflow: hidden;
+            &:nth-child(odd){ top: 60px; }
+            &:last-child{
+                .item{ background: @darkGrey; }
+            }
+            &.inactive {
+                pointer-events: none;
+                & > .item {
+                    .arrow-holder {
+                        display: none;
+                    }
+                }
+            }
+            & > figure{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                &:before{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    content: "";
+                    background: fade(@darkGrey, 40%);
+                    transition: all .5s @easing;
+                    overflow: hidden;
+                }
+                img{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: all .75s @easing;
+                    transform: scale(1);
+                    backface-visibility: hidden;
+                }
+            }
+            .item{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 10;
+                background: transparent;
+                overflow: hidden;
+                &:after{
+                    display: block;
+                    width: 100%;
+                    height: 4px;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    content: "";
+                    background: @yellow;
+                    overflow: hidden;
+                }
+                .square-holder{
+                    .square-fixed(@yellow);
+                    margin: 60px 0 0 60px;
+                }
+                h2{
+                    font-size: 1.125em;
+                    color: @white;
+                    padding: 15px 60px 15px 90px;
+                }
+                p{
+                    padding-left: 60px;
+                    color: @white;
+                }
+                .arrow-holder{
+                    display: block;
+                    width: 30px;
+                    height: 14px;
+                    position: absolute;
+                    right: 60px;
+                    bottom: 30px;
+                    cursor: pointer;
+                    transition: all .5s @easing;
+                    & > svg{
+                        .shaft,
+                        .arrowhead{
+                            fill: @yellow;
+                        }
+                        .shaft{
+                            transition: all .5s @easing;
+                            transform-origin: 100% 50%;
+                            transform: scaleX(1);
+                        }
+                    }
+                }
+            }
+            &:hover{
+                figure{
+                    &:before{ background: fade(@darkGrey, 0%); }
+                    img{ transform: scale(1.1); }
+                }
+                .item{
+                    .arrow-holder{
+                        transform: translateX(30px);
+                        .shaft{
+                            transform: scaleX(0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  services end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  staff start                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.staff-container{
+    padding-top: 120px;
+    .staff-info-holder{
+        .info-pane;
+        margin-left: 6.5%;
+        .square-holder{
+            .square-fixed;
+            margin-top: 30px;
+        }
+        h2{ padding: 15px 0 30px 30px; }
+        & > .subtitle-holder{
+            .rotated-subtitle;
+        }
+    }
+    &  > .staff{
+        width: 100%;
+        height: auto;
+        margin-top: -60px;
+        position: relative;
+        z-index: 20;
+        padding-bottom: 90px;
+        overflow: hidden;
+        .employee-holder{
+            width: 25%;
+            height: 0;
+            padding-top: 25%;
+            position: relative;
+            float: left;
+            overflow: hidden;
+            &:nth-child(odd){
+                top: 90px;
+            }
+            .employee{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                figure{
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    img{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        transition: all .75s @easing;
+                        transform: scale(1);
+                        backface-visibility: hidden;
+                    }
+                    &:before{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 2;
+                        content: "";
+                        background: fade(@darkGrey, 40%);
+                        transition: all .5s @easing;
+                        overflow: hidden;
+                    }
+                    &:after{
+                        display: block;
+                        width: 100%;
+                        height: 5px;
+                        position: absolute;
+                        left: 0;
+                        bottom: -1px;
+                        z-index: 10;
+                        content: "";
+                        background: @green;
+                        overflow: hidden;
+                    }
+                }
+                & > .info{
+                    width: 100%;
+                    height: auto;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 10;
+                    overflow: hidden;
+                    &:before{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content: "";
+                        background: fade(@lightGrey, 40%);
+                        transition: all .5s @easing;
+                        transform: translateY(100%);
+                        visibility: hidden;
+                        overflow: hidden;
+                    }
+                    .square-holder{
+                        .square-fixed(@green);
+                        position: absolute;
+                        top: 30px;
+                        left: 30px;
+                        transition: all .5s @easing;
+                        transform: rotate(0deg);
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    h3{
+                        position: relative;
+                        z-index: 10;
+                        padding: 45px 30px 0 60px;
+                        font-size: 1em;
+                        color: @darkGrey;
+                        opacity: 0;
+                        transition: all .5s @easing;
+                        visibility: hidden;
+                    }
+                    .position{
+                        display: block;
+                        position: relative;
+                        z-index: 10;
+                        padding: 5px 30px 30px 30px;
+                        color: @darkGrey;
+                        opacity: 0;
+                        transition: all .5s @easing;
+                        visibility: hidden;
+                    }
+                }
+                &:hover{
+                    figure{
+                        img{ transform: scale(1.1); }
+                        &:before{ background: fade(@darkGrey, 0%); }
+                    }
+                    .info{
+                        &:before{
+                            transform: translateY(0);
+                            visibility: visible;
+                        }
+                        .square-holder{
+                            opacity: 1;
+                            transform: rotate(180deg);
+                            visibility: visible;
+                        }
+                        h3,
+                        .position{
+                            opacity: 1;
+                            visibility: visible;
+                            transition: all .5s @easing .25s;
+                        }
+                        .position{ transition: all .5s @easing .5s; }
+                    }
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  staff end                                 */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  contact start                             */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.contact-container{
+    margin-top: -90px;
+    background: @lightGrey;
+    .inner{
+        width: 100%;
+        height: auto;
+        padding: 150px 6.5% 0 31.25%;
+        box-sizing: border-box;
+        overflow: hidden;
+        .square-holder{
+            .square-fixed;
+        }
+        h2{ padding: 15px 0 0 30px; }
+        p{ padding-top: 15px; }
+        .btn{ margin: 60px 0; }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  contact end                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen @netbook{
+
+    .info-pane(@width: 56.25%){
+        width: @width;
+        padding: 60px 60px 60px 120px;
+    }
+    .rotated-subtitle(@bg: @green){
+        width: 180px;
+        height: 60px;
+        h3{
+            line-height: 60px;
+            font-size: 1em;
+        }
+    }
+
+    .intro-container{
+        & > .inner{
+            h1{ font-size: 2.5em; }
+        }
+    }
+
+    #scroll-down-holder{
+        & > .square-holder{
+            & > .arrow{
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid @white;
+            }
+        }
+        p{ font-size: .875em; }
+    }
+
+    .about-container{
+        .about-info-holder{
+            .info-pane;
+            margin: -160px 0 0 12.5%;
+            & > .subtitle-holder{
+                .rotated-subtitle;
+            }
+        }
+    }
+
+    .services-container{
+        padding-top: 60px;
+        .service-info-holder{
+            .info-pane(62.5%);
+            h2{ padding: 15px 0 30px 30px; }
+            & > .subtitle-holder{
+                .rotated-subtitle(@yellow);
+            }
+            p{ padding-bottom: 30px; }
+        }
+        & > .services{
+            margin-top: -75px;
+            padding: 0 12.5% 60px 12.5%;
+            .item-holder{
+                .item{
+                    .square-holder{ margin: 30px 0 0 30px; }
+                    h2{
+                        font-size: 1em;
+                        padding: 15px 60px 0 60px;
+                    }
+                    .arrow-holder{
+                        right: 45px;
+                        bottom: 30px;
+                    }
+                }
+                &:hover{
+                    .item{
+                        .arrow-holder{ transform: translateX(15px); }
+                    }
+                }
+            }
+        }
+    }
+
+    .staff-container{
+        padding-top: 60px;
+        .staff-info-holder{
+            .info-pane;
+            & > .subtitle-holder{
+                .rotated-subtitle;
+            }
+            p{ padding-bottom: 30px; }
+        }
+        &  > .staff{
+            margin-top: -30px;
+            padding-bottom: 60px;
+            .employee-holder{
+                &:nth-child(odd){
+                    top: 60px;
+                }
+            }
+        }
+    }
+
+    .contact-container{
+        margin-top: -60px;
+        .inner{
+            padding: 90px 6.5% 0 31.25%;
+            .btn{ margin: 30px 0 60px; }
+        }
+    }
+
+}
+
+@media only screen @tablet{
+
+    .info-pane(@width: 56.25%){
+        width: @width;
+        padding: 60px 60px 45px;
+    }
+    .rotated-subtitle(@bg: @green){
+        width: 180px;
+        height: 60px;
+        top: 0;
+        left: 0;
+        background: @bg;
+        transform: rotate(0deg) translateX(0%);
+        h3{ line-height: 60px; }
+    }
+
+    .intro-container{
+        background: @white url("@{images}/intro-bg.jpg") no-repeat 0% 50%;
+        background-size: cover;
+        & > .inner{
+            padding: 0 60px;
+            & > .square-holder{
+                width: 30px;
+                height: 30px;
+                padding-top: 0;
+            }
+            h1{ padding: 30px 0 0; }
+        }
+    }
+    #scroll-down-holder{
+        width: 120px;
+        height: auto;
+        padding-top: 0;
+        right: 50%;
+        bottom: 120px;
+        transform: translateX(50%);
+        overflow: hidden;
+        & > .square-holder{
+            width: 30px;
+            height: 30px;
+            padding-top: 0;
+            position: relative;
+            margin: 0 auto;
+            background: transparent;
+            & > .arrow{
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid @white;
+            }
+        }
+        p{
+            display: block;
+            position: relative;
+            top: auto;
+            left: auto;
+            text-align: center;
+        }
+    }
+
+    .about-container{
+        padding: 0 60px;
+        box-sizing: border-box;
+        .about-info-holder{
+            .info-pane(100%);
+            margin: -75px 0 0 0;
+            .square-holder{
+                .square-fixed;
+                margin-top: 30px;
+            }
+            h2{ padding: 15px 0; }
+            & > .subtitle-holder{
+                .rotated-subtitle;
+            }
+            p{ padding-bottom: 15px; }
+        }
+        .benefits-holder{
+            margin-top: 0;
+            background: transparent;
+            background-size: auto;
+            & > .benefits{
+                width: 100%;
+                padding-left: 0;
+                margin-top: 60px;
+                .item{
+                    width: 50%;
+                    .square-holder{
+                        .square(50%);
+                        margin: 0 auto;
+                        .number{
+                            font-size: 3em;
+                        }
+                    }
+                    p{
+                        display: block;
+                        padding: 15px 30px 0;
+                        text-align: center;
+                    }
+                }
+            }
+            & > .distinction-holder{
+                width: 100%;
+                margin-top: 60px;
+                padding: 0;
+                h3{ padding: 15px 0 0 0; }
+                ul{ margin-top: 15px; }
+            }
+        }
+    }
+
+    .services-container{
+        padding: 60px 60px 0;
+        box-sizing: border-box;
+        .service-info-holder{
+            .info-pane(100%);
+            .square-holder{
+                .square-fixed;
+                margin-top: 30px;
+            }
+            h2{ padding: 15px 0; }
+            & > .subtitle-holder{
+                .rotated-subtitle(@yellow);
+            }
+        }
+        & > .services{
+            width: 100%;
+            margin-top: 30px;
+            padding: 0;
+            .item-holder{
+                width: 100%;
+                padding-top: 50%;
+                &:nth-child(odd){ top: auto; }
+                .item{
+                    .square-holder{
+                        margin: 0;
+                        top: 60px;
+                        left: 60px;
+                    }
+                    h2{
+                        font-size: 1.125em;
+                        padding: 75px 60px 15px 60px;
+                    }
+                    .arrow-holder{
+                        right: 45px;
+                    }
+                }
+            }
+        }
+    }
+
+    .staff-container{
+        padding: 60px 60px 0;
+        box-sizing: border-box;
+        .staff-info-holder{
+            .info-pane(100%);
+            margin-left: 0;
+            .square-holder{
+                .square-fixed;
+                margin-top: 30px;
+            }
+            h2{ padding: 15px 0px; }
+            & > .subtitle-holder{
+                .rotated-subtitle;
+            }
+        }
+        &  > .staff{
+            margin-top: 0;
+            padding-bottom: 0;
+            .employee-holder{
+                width: 47.68518518518519%;
+                padding-top: 47.68518518518519%;
+                position: relative;
+                float: left;
+                margin: 30px 0 0 4.62962962962963%;
+                overflow: hidden;
+                &:nth-child(odd){
+                    top: auto;
+                    margin-left: 0;
+                }
+                .employee{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    pointer-events: none;
+                    overflow: hidden;
+                    figure{
+                        height: 100%;
+                        position: relative;
+                        overflow: hidden;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            transition: all .75s @easing;
+                            transform: scale(1);
+                            backface-visibility: hidden;
+                        }
+                        &:before{
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            z-index: 2;
+                            content: "";
+                            background: fade(@darkGrey, 40%);
+                            transition: all .5s @easing;
+                            overflow: hidden;
+                        }
+                        &:after{
+                            display: block;
+                            width: 100%;
+                            height: 5px;
+                            position: absolute;
+                            left: 0;
+                            bottom: -1px;
+                            z-index: 10;
+                            content: "";
+                            background: @green;
+                            overflow: hidden;
+                        }
+                    }
+                    & > .info{
+                        &:before{
+                            transform: translateY(0%);
+                            visibility: visible;
+                        }
+                        .square-holder{ display: none; }
+                        h3{
+                            padding: 30px 30px 0 30px;
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        .position{
+                            padding: 5px 30px 30px 30px;
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-container{
+        margin-top: 60px;
+        .inner{
+            padding: 60px 60px 0;
+            h2{ padding: 15px 0 0 0px; }
+            .btn{ margin: 30px 0 60px; }
+        }
+    }
+
+}
+
+@media only screen @phoneL{
+
+    .info-pane(@width: 56.25%){
+        width: @width;
+        padding: 30px 30px 15px;
+    }
+    .rotated-subtitle(@bg: @green){
+        width: 180px;
+        height: 45px;
+        h3{
+            font-size: .875em;
+            line-height: 45px;
+        }
+    }
+
+    .intro-container{
+        & > .inner{
+            padding: 0 30px;
+            h1{ font-size: 1.875em; }
+        }
+    }
+    #scroll-down-holder{
+        bottom: 90px;
+    }
+
+    .about-container{
+        padding: 0 30px;
+        .about-info-holder{
+            .info-pane(100%);
+            margin: -60px 0 0 0;
+            & > .subtitle-holder{
+                .rotated-subtitle;
+            }
+        }
+        .benefits-holder{
+            & > .benefits{
+                width: 100%;
+                padding-left: 0;
+                margin-top: 30px;
+                .item{
+                    width: 45.76271186440678%;
+                    margin-right: 8.474576271186441%;
+                    &:last-child{ margin-right: 0; }
+                    .square-holder{
+                        .square(100%);
+                        margin: 0 auto;
+                    }
+                    p{ padding: 15px 0 0; }
+                }
+            }
+            & > .distinction-holder{
+                margin-top: 30px;
+            }
+        }
+    }
+
+    .services-container{
+        padding: 60px 30px 0;
+        .service-info-holder{
+            .info-pane(100%);
+            & > .subtitle-holder{
+                .rotated-subtitle(@yellow);
+            }
+        }
+        & > .services{
+            margin-top: 30px;
+            .item-holder{
+                .item{
+                    .square-holder{ display: none; }
+                    h2{
+                        font-size: 1em;
+                        padding: 30px 30px 15px 30px;
+                    }
+                    p{ padding-left: 30px; }
+                    .arrow-holder{ right: 30px; }
+                }
+            }
+        }
+    }
+
+    .staff-container{
+        padding: 60px 30px 0;
+        .staff-info-holder{
+            .info-pane(100%);
+            margin-bottom: 15px;
+            & > .subtitle-holder{
+                .rotated-subtitle;
+            }
+        }
+        &  > .staff{
+            .employee-holder{
+                width: 100%;
+                padding-top: 100%;
+                float: none;
+                margin: 15px 0 0 0;
+                &:nth-child(odd){
+                    margin-left: 0;
+                }
+                .employee{
+                    figure{
+                        &:before{
+                            background: fade(@darkGrey, 0%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-container{
+        margin-top: 60px;
+        .inner{
+            padding: 30px 30px 0;
+            h2{ padding: 15px 0 0 0px; }
+            .btn{ margin: 30px 0; }
+        }
+    }
+
+}
+
+@media only screen @phoneS{
+
+    .intro-container{
+        & > .inner{
+            .square-holder{ display: none; }
+            h1{ padding: 0; }
+        }
+    }
+
+    .services-container{
+        .item-holder{
+            .item{
+                p{ display: none; }
+            }
+        }
+    }
+
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

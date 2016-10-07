@@ -1,0 +1,11 @@
+{# hgbd_project/hgbd/website/templates/website/components/footer.html #}
+{% load website_helpers %}
+
+<span class="square-holder"></span>
+<div class="phone-holder">
+    <a href="tel:+{{ contacts.phone|sift_digits }}">{{ contacts.phone }}</a>
+</div>
+<div class="mail-holder">
+    <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+</div>
+<p>{{ contacts.address }}</p>

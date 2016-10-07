@@ -1,3 +1,4 @@
+# hgbd_project/hgbd/metadata/templatetags/metadata_tags.py
 from django import template
 
 from metadata.models import Metadata

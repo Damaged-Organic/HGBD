@@ -1,0 +1,43 @@
+{
+  "name": "hg",
+  "version": "1.0.0",
+  "description": "HG - business development",
+  "main": "index.js",
+  "scripts": {
+    "dev-api": "babel-node server/api.js",
+    "dev-server": "webpack-dev-server --hot --inline --colors --history-api-fallback --port 3333",
+    "dev": "set NODE_ENV=development && webpack",
+    "dev-build": "npm run dev && npm run dev-server",
+    "prod-build": "set NODE_ENV=production && webpack -p --config webpack.prod.config.js --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Smile0ff/HG.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Smile0ff/HG/issues"
+  },
+  "homepage": "https://github.com/Smile0ff/HG#readme",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "body-parser": "^1.15.2",
+    "copy-webpack-plugin": "^3.0.1",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^3.0.3",
+    "imagemin-pngquant": "^5.0.0",
+    "method-override": "^2.3.6",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "google-maps": "^3.2.1",
+    "jquery": "^3.1.0",
+    "jquery-validation": "^1.15.1"
+  }
+}

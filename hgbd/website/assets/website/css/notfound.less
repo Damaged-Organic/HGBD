@@ -1,0 +1,222 @@
+@import "./components/common.less";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#page,
+#content{
+    overflow: hidden;
+}
+#logo-holder{
+    .square(12.5%, @white);
+    left: 50%;
+    z-index: 10;
+    transform: translateX(-50%);
+    backface-visibility: hidden;
+    a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  not-found start                           */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.not-found-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: @darkGrey url("@{images}/not-found-bg.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    overflow: hidden;
+    .inner{
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 10;
+        transform: translateY(-50%);
+        padding: 0 6.25%;
+        box-sizing: border-box;
+        overflow: hidden;
+        .square-holder{
+            .square(6.25%, @green);
+        }
+        h1{
+            font-size: 3.125vw;
+            color: @white;
+            text-align: left;
+            text-transform: uppercase;
+            margin-left: 6.25%;
+            padding: 15px 0 30px 15px;
+        }
+        p{
+            color: @white;
+            text-align: left;
+        }
+        .btn{
+            margin-top: 60px;
+            position: relative;
+            backface-visibility: hidden;
+            
+        }
+    }
+    .status-holder{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        .lane{
+            display: block;
+            width: 4px;
+            height: 40%;
+            position: absolute;
+            top: 0;
+            right: 18.75%;
+            background: @green;
+            overflow: hidden;
+        }
+        .status{
+            display: block;
+            width: 180px;
+            height: 90px;
+            position: absolute;
+            top: 40%;
+            right: 18.75%;
+            transform-origin: 100% 50%;
+            transform: translateY(-49px) rotate(-60deg);
+            background: @green;
+            animation: flipping 3s @easing 0s infinite;
+            font-size: 2em;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 90px;
+            color: @white;
+        }
+    }
+}
+
+@keyframes flipping{
+    0%, 100%{
+        transform: translateY(-49px) rotate(-60deg);
+    }
+    50% {
+        transform: translateY(-49px) rotate(-120deg);
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  not-found end                             */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen @tablet{
+
+    #logo-holder{
+        width: 90px;
+        height: 90px;
+        position: relative;
+        left: auto;
+        z-index: 10;
+        margin: 60px 0 0 60px;
+        padding: 0;
+        transform: translateX(0);
+    }
+    
+    .not-found-container{
+        .inner{
+            padding: 0 60px;
+            .square-holder{
+                width: 30px;
+                height: 30px;
+                padding: 0;
+            }
+            h1{
+                font-size: 2.5em;
+                margin-left: 0;
+                padding: 15px 0 5px 0px;
+            }
+            .btn{
+                margin-top: 30px;
+                
+            }
+        }
+        .status-holder{
+            .lane{
+                display: none;
+            }
+            .status{
+                top: 60px;
+                right: 60px;
+                transform: translateY(0px) rotate(0deg);
+                background: transparent;
+                animation: none;
+                font-size: 3.5em;
+                line-height: 90px;
+            }
+        }
+    }
+
+}
+
+
+@media only screen @phoneL{
+
+    #logo-holder{
+        width: 60px;
+        height: 60px;
+        margin: 30px 0 0 30px;
+    }
+    
+    .not-found-container{
+        .inner{
+            padding: 0 30px;
+            .square-holder{
+                .square-fixed(@green);
+            }
+            h1{
+                font-size: 2em;
+                padding: 15px 0 5px 0px;
+            }
+            .btn{ margin-top: 30px; }
+        }
+        .status-holder{
+            .status{
+                height: 60px;
+                top: 30px;
+                right: 30px;
+                text-align: right;
+                font-size: 2.5em;
+                line-height: 60px;
+            }
+        }
+    }
+
+}
+
+@media only screen @phoneS{
+
+    .not-found-container{
+        .inner{
+            .square-holder{ display: none; }
+            h1{ font-size: 1.5em; }
+        }
+    }
+
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

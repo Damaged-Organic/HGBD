@@ -1,0 +1,93 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  env variables start                       */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@darkGrey: #333333;
+@lightGrey: #d9d9d9;
+@green: #6bba79;
+@yellow: #e6dc83;
+@white: #ffffff;
+
+@successDark: #4F8A10;
+@successLight: #DFF2BF;
+@errorDark: #D8000C;
+@errorLight: #FFBABA;
+
+@images: ~"../images";
+@easing: ease-in-out;
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  env variables end                         */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@notebook: ~"and (max-width: 1440px)";
+@netbook: ~"and (max-width: 1280px)";
+@tablet: ~"and (max-width: 1024px)";
+@phoneL: ~"and (max-width: 440px)";
+@phoneS: ~"and (max-width: 320px)";
+
+@landscape: ~"and (max-width: 800px) and (orientation: landscape)";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  mixins start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.square(@width: 6.25%, @color: @darkGrey){
+    display: block;
+    width: @width;
+    height: 0;
+    padding-top: @width;
+    position: relative;
+    background: @color;
+    overflow: hidden;
+}
+.square-fixed(@color: @darkGrey){
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    background: @color;
+    overflow: hidden;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  mixins end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  helpers start                             */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.clearfix{
+    &:after{
+        display: block;
+        height: 0;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        visibility: hidden;
+    }
+}
+img,
+figure img{
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.svg-holder{
+    position: relative;
+    overflow: hidden;
+    & > svg{
+        position: absolute;
+        top: 0;
+        left: 0;
+    } 
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  helpers end                               */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+

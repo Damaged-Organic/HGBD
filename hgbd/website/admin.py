@@ -27,11 +27,11 @@ from .models import (
 class IntroContentAdmin(
     ForbidAddMixin, ForbidDeleteMixin, DefaultOrderingModelAdmin
 ):
-    list_display = ('headline_uk', )
+    list_display = ('headline_in_uk', 'headline_out_uk', )
 
     fieldsets = (
         ('Локалізована інформація', {
-            'fields': ('headline_uk', )
+            'fields': ('headline_in_uk', 'headline_out_uk', )
         }),
     )
 

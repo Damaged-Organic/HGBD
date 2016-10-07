@@ -10,15 +10,257 @@
 {% block meta %}
     {{ block.super }}
     <meta name="Description" content="{{ METADATA.description }}">
-    <meta name=“robots” content="{{ METADATA.robots }}">
+    <meta name="robots" content="{{ METADATA.robots }}">
+    {# Open Graph #}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% trans 'HG Business Development' noop %} | {{ METADATA.title }}">
+    <meta property="og:description" content="{{ METADATA.description }}">
+    <meta property="og:image" content="{{ request|absolute_url }}{% static 'website/images/logo.jpg' %}">
 {% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'website/css/home.bundle.min.css' %}">
 {% endblock %}
 
 {% block body %}
-    Головна
+    <div id="page">
+        <main id="content">
+            <section class="container intro-container">
+
+                {% include 'website/components/header.html' with contacts=contacts only %}
+
+                <div class="inner">
+                    <span class="square-holder"></span>
+                    <h1>
+                        <span>{{ content.intro.headline_in }}</span>
+                        <span>{{ content.intro.headline_out }}</span>
+                    </h1>
+                </div>
+                <div id="scroll-down-holder">
+                    <span class="square-holder">
+                        <span class="arrow"></span>
+                    </span>
+                    <p>{% trans 'листайте нижче' %}</p>
+                </div>
+            </section>
+            <section class="container about-container">
+                <div class="about-info-holder">
+                    <span class="square-holder"></span>
+                    <h2>{{ content.about.title }}</h2>
+                    <div class="subtitle-holder">
+                        <h3>{{ content.about.label }}</h3>
+                    </div>
+
+                    {% paragraphize content.about.text '<p>' '</p>' %}
+
+                </div>
+                <div class="benefits-holder">
+                    <div class="benefits">
+
+                        {% for number in numbers %}
+                            <div class="item">
+                                <span class="square-holder">
+                                    <span class="number">{{ number.quantity }}</span>
+                                </span>
+                                <p>{{ number.description }}</p>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="distinction-holder">
+                        <span class="square-holder"></span>
+                        <h3>{{ content.benefits.title }}</h3>
+                        <ul>
+
+                            {% for benefit in benefits %}
+                                <li>
+                                    <span>{{ forloop.counter|stringformat:"02d" }}.</span>
+                                    <p>{{ benefit.text }}</p>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="container services-container">
+                <div class="service-info-holder">
+                    <span class="square-holder"></span>
+                    <h2>{{ content.services.title }}</h2>
+                    <div class="subtitle-holder">
+                        <h3>{{ content.services.label }}</h3>
+                    </div>
+
+                    {% paragraphize content.services.text '<p>' '</p>' %}
+
+                </div>
+                <div class="services">
+
+                    {% for service in services %}
+                        {# pk=1 equality is a stub to display link for first service only #}
+                        <article class="item-holder {% if service.pk is not 1 %}inactive{% endif %}">
+
+                            {% if service.image_list %}
+                                <figure>
+                                    <img src="{% static 'website/images/services/thumb/' %}{{ service.image_list }}" alt="{{ service.title }}">
+                                </figure>
+                            {% endif %}
+
+                            <a href="{% if service.pk is 1 %} {% url 'website:service' pk=1 slug='test' %} {% else %} # {% endif %}" class="item">
+                                <span class="square-holder"></span>
+                                <h2>{{ service.title }}</h2>
+                                <p>
+                                    {{ service.description }}
+                                </p>
+                                <span class="arrow-holder svg-holder">
+                                    <svg viewBox="0 0 30 14">
+                                        <path class="shaft" d="M29.15,7.5H0v-1H29.15L29.67,7Z"/>
+                                        <path class="arrowhead" d="M21.5,0H23l7,7-7,7H21.5l7-7Z"/>
+                                    </svg>
+                                </span>
+                            </a>
+                        </article>
+                    {% endfor %}
+
+                </div>
+            </section>
+            <section class="container staff-container">
+
+                {% with content.team as content_for_team %}
+                    <div class="staff-info-holder">
+                        <span class="square-holder"></span>
+                        <h2>{{ content_for_team.title }}</h2>
+                        <div class="subtitle-holder">
+                            <h3>{{ content_for_team.label }}</h3>
+                        </div>
+
+                        {% paragraphize content_for_team.text '<p>' '</p>' %}
+
+                    </div>
+                {% endwith %}
+
+                <div class="staff">
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-1.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-2.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-3.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-1.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-2.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-3.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-1.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="employee-holder">
+                        <div class="employee">
+                            <figure>
+                                <img src="build/images/staff/employee-1.jpg" alt="employee name goes here">
+                            </figure>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h3>Василій Васильович</h3>
+                                <span class="position">Менеджер</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="container contact-container">
+                <div class="inner">
+                    <span class="square-holder"></span>
+                    <h2>Ми завжди відкриті до нових ідей та проектів</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales est sed urna dictum, in auctor lacus interdum nullam sed eros non erat rhoncus molestie vitae vel tortor. Nunc nec fermentum purus. Nunc vulputate tincidunt elit vel porttitor</p>
+                    <div class="btn">
+                        <a href="#">Написати нам</a>
+                    </div>
+                </div>
+            </section>
+
+            {% include 'website/components/footer_container.html' with contacts=contacts only %}
+
+        </main>
+    </div>
+
+    {% include 'website/components/loader.html' only %}
+
+    {% include 'website/components/landscape.html' only %}
+
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{% static 'website/js/home.bundle.min.js' %}"></script>
 {% endblock %}

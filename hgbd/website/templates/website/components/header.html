@@ -1,0 +1,16 @@
+{# hgbd_project/hgbd/website/templates/website/components/header.html #}
+{% load staticfiles i18n website_helpers %}
+
+<header id="header">
+    <div class="logo-holder">
+        <a href="{% url 'website:index' %}">
+            <img src="{% static 'website/images/logo.png' %}" alt="HG Business Development logo">
+        </a>
+    </div>
+    <div class="phone-holder">
+        <span class="square-holder"></span>
+        <span class="phone-code-holder">{{ contacts.get_phone_code }}</span>
+        <a href="tel:+{{ contacts.phone|sift_digits }}">{{ contacts.get_phone_number }}</a>
+        <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+    </div>
+</header>

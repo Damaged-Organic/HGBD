@@ -1,3 +1,5 @@
+import re
+
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -33,7 +35,8 @@ class ContentBlock(models.Model):
 
 
 class IntroContent(ContentBlock, metaclass=TransMeta):
-    headline = models.CharField('Слоган', max_length=100)
+    headline_in = models.CharField('Слоган (вступ)', max_length=50)
+    headline_out = models.CharField('Слоган (висновок)', max_length=50)
 
     class Meta:
         db_table = get_table_name('content', 'intro')
@@ -43,7 +46,7 @@ class IntroContent(ContentBlock, metaclass=TransMeta):
         verbose_name = 'Блок "Вступ"'
         verbose_name_plural = order_prefix + verbose_name
 
-        translate = ('headline', )
+        translate = ('headline_in', 'headline_out', )
 
 
 class AboutContent(ContentBlock, metaclass=TransMeta):
@@ -182,6 +185,14 @@ class Contact(models.Model, metaclass=TransMeta):
     def __str__(self):
         return self._meta.verbose_name or self.__name__
 
+    @property
+    def get_phone_code(self):
+        return re.search(r'\((.*)\)', self.phone).group(1)
+
+    @property
+    def get_phone_number(self):
+        return re.search(r'(\d{3}-\d{2}-\d{2})', self.phone).group(1)
+
 
 # Employee
 
@@ -234,10 +245,10 @@ class Service(models.Model, metaclass=TransMeta):
     hint_description = models.CharField('Текст визначення', max_length=500)
 
     image_main = models.ImageField(
-        'Головне зображення', upload_to=IMAGE_PATH_MAIN
+        'Головне зображення', upload_to=IMAGE_PATH_MAIN, null=True
     )
     image_list = models.ImageField(
-        'Зображення до списку', upload_to=IMAGE_PATH_LIST
+        'Зображення до списку', upload_to=IMAGE_PATH_LIST, null=True
     )
 
     class Meta:

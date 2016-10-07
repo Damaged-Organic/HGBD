@@ -1,0 +1,420 @@
+@import "./components/common.less";
+@import "./components/forms.less";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    .logo-holder{
+        background: @lightGrey;
+        top: 120px;
+        left: 12.5%;
+        transform: translateX(0%);
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  contacts intro start                      */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.contacts-intro-container{
+    height: 100%;
+    position: relative;
+    .inner{
+        width: 100%;
+        height: 100%;
+        padding: 240px 0 0 37.5%;
+        box-sizing: border-box;
+        overflow: hidden;
+        .info-holder{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            .bg-photo-holder{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: url("@{images}/contacts-bg.jpg") no-repeat 50% 50%;
+                background-size: cover;
+                overflow: hidden;
+            }
+            .info{
+                width: 100%;
+                height: auto;
+                position: relative;
+                z-index: 10;
+                background: transparent;
+                overflow: hidden;
+                .square-holder{
+                    display: block;
+                    width: 60px;
+                    height: 60px;
+                    margin: 120px 0 0 120px;
+                    background: @green;
+                    overflow: hidden;
+                }
+                h1{
+                    font-size: 3em;
+                    font-size: 2.5vw;
+                    padding: 15px 120px 0 205px;
+                    color: @white;
+                }
+            }
+        }
+    }
+    .contact-info-holder{
+        width: 40.625%;
+        height: auto;
+        position: absolute;
+        left: 6.25%;
+        bottom: 360px;
+        z-index: 10;
+        padding: 120px 120px 120px 150px;
+        box-sizing: border-box;
+        background: @lightGrey;
+        transform: translateY(100%);
+        overflow: hidden;
+        & > h2{
+            display: block;
+            width: 240px;
+            height: 90px;
+            position: absolute;
+            top: 360px;
+            left: 0;
+            transform-origin: 0% 0%;
+            transform: rotate(-90deg);
+            background: @yellow;
+            font-size: 1.125em;
+            text-align: center;
+            color: @white;
+            line-height: 90px;
+            overflow: hidden;
+        }
+        ul{
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            overflow: hidden;
+            li{
+                display: block;
+                width: 100%;
+                margin-bottom: 30px;
+                overflow: hidden;
+                &:last-child{ margin-bottom: 0; }
+                .square-holder{
+                    .square-fixed;
+                }
+                .upper-title{
+                    display: block;
+                    width: 100%;
+                    font-size: .875em;
+                    padding-left: 30px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                }
+                a, p{
+                    display: block;
+                    width: 100%;
+                    font-size: 1em;
+                    font-weight: 900;
+                    padding-left: 30px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  contacts intro end                        */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  feedback start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.feedback-container{
+    position: relative;
+    overflow: hidden;
+    .form-holder{
+        width: 100%;
+        height: auto;
+        padding: 120px 6.25% 120px 59.375%;
+        box-sizing: border-box;
+        overflow: hidden;
+        .inner{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            .square-holder{ .square-fixed; }
+            h2{ padding: 15px 0 15px 30px;  }
+            & > form{
+                margin-top: 30px;
+                position: relative;
+                padding-bottom: 120px;
+                .field-holder{ margin-top: 30px; }
+                button[type="submit"]{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    #map{
+        display: block;
+        width: 53.125%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  feedback end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  footer start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#footer{
+    width: 100%;
+    height: auto;
+    background: @darkGrey;
+    text-align: center;
+    overflow: hidden;
+    figure{
+        width: 40px;
+        height: auto;
+        margin: 30px auto 5px;
+    }
+    small{
+        display: inline-block;
+        vertical-align: top;
+        font-size: .75em;
+        color: @white;
+        padding-bottom: 5px;
+        a{
+            color: inherit;
+            transition: all .25s @easing;
+            &:hover{
+                color: @green;
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  footer end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen @notebook{
+
+    .contacts-intro-container{
+        .contact-info-holder{
+            bottom: 240px;
+        }
+    }
+
+}
+
+@media only screen @netbook{
+
+    .contacts-intro-container{
+        .contact-info-holder{
+            padding: 60px 60px 60px 120px;
+            & > h2{
+                width: 180px;
+                height: 60px;
+                top: 240px;
+                font-size: 1em;
+                line-height: 60px;
+            }
+        }
+    }
+
+}
+
+@media only screen @tablet{
+
+    #header{
+        .logo-holder{
+            width: 90px;
+            height: 90px;
+            position: relative;
+            top: auto;
+            left: auto;
+            margin: 60px 0 0 60px;
+        }
+        .phone-holder{
+            &.black{
+                .phone-code-holder, a{ color: @white; }
+            }
+        }
+    }
+
+    .contacts-intro-container{
+        height: auto;
+        .inner{
+            height: auto;
+            padding: 0;
+            overflow: hidden;
+            .info-holder{
+                .info{
+                    padding: 240px 60px;
+                    position: relative;
+                    top: auto;
+                    left: auto;
+                    transform: translateY(0);
+                    box-sizing: border-box;
+                    .square-holder{
+                        width: 30px;
+                        height: 30px;
+                        margin: 0;
+                    }
+                    h1{
+                        font-size: 2em;
+                        padding: 15px 0 0 0;
+                    }
+                }
+            }
+        }
+        .contact-info-holder{
+            width: 87.5%;
+            height: auto;
+            position: relative;
+            left: auto;
+            bottom: auto;
+            padding: 60px;
+            margin: -75px 6.25% 0;
+            transform: translateY(0%);
+            & > h2{
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: rotate(0deg);
+            }
+            ul{
+                li{
+                    .upper-title{ padding: 15px 0 0 0; }
+                    a, p{
+                        font-size: 1em;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    .feedback-container{
+        padding: 0 6.25%;
+        box-sizing: border-box;
+        .form-holder{
+            padding: 60px 0 0;
+            margin-bottom: 60px;
+            .inner{
+                h2{ padding: 15px 0 15px 0px; }
+            }
+        }
+        #map{  display: none; }
+    }
+
+}
+
+@media only screen @phoneL{
+
+    #header{
+        position: relative;
+        .logo-holder{
+            width: 60px;
+            height: 60px;
+            margin: 30px 0 0 30px;
+        }
+        .phone-holder.black{
+            .phone-code-holder, a{ color: @darkGrey; }
+        }
+    }
+
+    .contacts-intro-container{
+        padding: 0 30px;
+        box-sizing: border-box;
+        .inner{
+            .info-holder{
+                .bg-photo-holder{ display: none; }
+                .info{
+                    padding: 60px 0;
+                    h1{
+                        font-size: 1.875em;
+                        color: @darkGrey;
+                    }
+                }
+            }
+        }
+        .contact-info-holder{
+            width: 100%;
+            padding: 60px 30px 30px 30px;
+            margin: 0;
+            h2{
+                height: 45px;
+                font-size: .875em;
+                line-height: 45px;
+            }
+            ul{
+                margin-top: 0;
+                li{
+                    margin-bottom: 15px;
+                    .square-holder{ display: none; }
+                    .upper-title{ padding: 0; }
+                }
+            }
+        }
+    }
+
+    .feedback-container{
+        padding: 0 30px;
+        .form-holder{
+            .inner{
+                form{
+                    margin-top: 0;
+                    padding-bottom: 75px;
+                }
+            }
+        }
+    }
+    
+    #footer{
+        small{
+            display: block;
+            text-align: center;
+            padding: 0 30px 15px;
+        }
+    }
+
+}
+
+@media only screen @phoneS{
+
+    .contacts-intro-container{
+        .inner{
+            .info-holder{
+                .info{
+                    .square-holder{ display: none; }
+                    h1{ font-size: 1.5em; }
+                }
+            }
+        }
+    }
+
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

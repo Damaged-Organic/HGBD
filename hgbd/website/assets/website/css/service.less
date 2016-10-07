@@ -1,0 +1,691 @@
+@import "./components/common.less";
+@import "./components/tabs.less";
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout start                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    .logo-holder{
+        background: @lightGrey;
+        top: 120px;
+        left: 12.5%;
+        transform: translateX(0%);
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  layout end                                */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service intro start                       */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.service-container{
+    height: auto;
+    min-height: 100%;
+    .intro-container{
+        height: 100%;
+        position: relative;
+        .intro-info-holder{
+            width: 100%;
+            height: auto;
+            position: relative;
+            padding: 240px 0 0 37.5%;
+            box-sizing: border-box;
+            overflow: hidden;
+            .photo-holder{
+                width: 100%;
+                height: 0;
+                padding-top: 80%;
+                position: relative;
+                overflow: hidden;
+                figure{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+            .info-holder{
+                width: 62.5%;
+                height: auto;
+                position: absolute;
+                top: 240px;
+                left: 37.5%;
+                z-index: 10;
+                .square-holder{
+                    display: block;
+                    width: 60px;
+                    height: 60px;
+                    margin: 120px 0 0 120px;
+                    background: @yellow;
+                }
+                h1{
+                    font-size: 3em;
+                    font-size: 2.5vw;
+                    color: @white;
+                    padding: 15px 90px 0 195px;
+                    box-sizing: border-box;
+                    span{
+                        font-weight: inherit;
+                        color: @yellow;
+                    }
+                }
+            }
+        }
+        .navigation-holder{
+            width: 37.5%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            .navigation{
+                width: 100%;
+                height: auto;
+                position: absolute;
+                left: 0;
+                bottom: 300px;
+                overflow: hidden;
+                .nav-btn{
+                    display: block;
+                    width: 43.75%;
+                    height: auto;
+                    float: left;
+                    position: relative;
+                    margin-left: 4.166666666666667%;
+                    overflow: hidden;
+                    &:before,
+                    &:after{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        content: "";
+                        overflow: hidden;
+                    }
+                    &:before{
+                        top: 0;
+                        left: 0;
+                        z-index: 5;
+                        transition: all .5s @easing;
+                        background: fade(@darkGrey, 40%);
+                    }
+                    &:after{
+                        height: 4px;
+                        left: 0;
+                        bottom: 0;
+                        z-index: 10;
+                        background: @yellow;
+                    }
+                    .link{
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        z-index: 15;
+                        text-align: center;
+                        transform: translateY(-50%);
+                        .arrow{
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 30px;
+                            height: 14px;
+                            transition: all .5s @easing;
+                            transform: translateX(0px);
+                            backface-visibility: hidden;
+                            .arrowhead,
+                            .shaft{
+                                transition: all .5s @easing;
+                                fill: @white;
+                            }
+                            .shaft{
+                                transform-origin: 100% 50%;
+                                transform: scaleX(1);
+                            }
+                        }
+                        .text{
+                            display: inline-block;
+                            vertical-align: middle;
+                            padding: 0 15px;
+                            color: @white;
+                            transition: all .5s @easing;
+                        }
+                    }
+                    &.prev{
+                        .link .arrow{ transform: translateX(0) rotate(180deg); }
+                    }
+                    &:hover{
+                        &:before{
+                            background: fade(@darkGrey, 80%);
+                        }
+                        .link{
+                            .arrow{
+                                transform: translateX(15px);
+                                .arrowhead{ fill: @yellow; }
+                                .shaft{ transform: scaleX(0); }
+                            }
+                            .text{ color: @yellow; }
+                        }
+                        &.prev{
+                            .link .arrow{ transform: translateX(-15px) rotate(180deg); }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service intro end                         */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service about start                       */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.service-container{
+    .about-container{
+        position: relative;
+        .about-pane-holder{
+            width: 56.25%;
+            height: auto;
+            position: relative;
+            top: -240px;
+            left: 0;
+            z-index: 10;
+            padding: 120px 120px 105px 150px;
+            background: @lightGrey;
+            box-sizing: border-box;
+            overflow: hidden;
+            .square-holder{
+                .square-fixed;
+                margin-top: 30px;
+            }
+            h2{ padding: 15px 0 30px 30px; }
+            h3{
+                display: block;
+                width: 240px;
+                height: 90px;
+                position: absolute;
+                top: 360px;
+                left: 0;
+                transform-origin: 0% 0%;
+                transform: rotate(-90deg);
+                text-align: center;
+                line-height: 90px;
+                color: @white;
+                background: @green;
+                overflow: hidden;
+            }
+            p{ padding-bottom: 15px; }
+        }
+        .explanation-pane-holder{
+            width: 43.75%;
+            height: auto;
+            background: @darkGrey;
+            position: relative;
+            top: -300px;
+            left: 50%;
+            z-index: 15;
+            overflow: hidden;
+            .square-holder{
+                .square-fixed;
+                margin: 60px 0 0 60px;
+                background: @green;
+            }
+            h2{
+                font-size: 1.125em;
+                padding: 15px 60px 0 90px;
+                color: @white;
+            }
+            p{
+                padding: 30px 60px 60px;
+                color: @white;
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service about end                         */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service info start                        */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.service-container{
+    .information-container{
+        position: relative;
+        margin-top: -240px;
+        .photo-holder{
+            width: 56.25%;
+            height: 0;
+            padding-top: 56.25%;
+            position: relative;
+            margin-left: 6.25%;
+            overflow: hidden;
+            & > figure{
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+        .tabs-container{
+            width: 62.5%;
+            height: auto;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            z-index: 20;
+            & > ul{
+                width: 180px;
+                margin-top: 60px;
+                float: left;
+            }
+            .tab-content-holder{
+                width: ~"calc(100% - 180px)";
+                float: left;
+                .tab-content{
+                    min-height: 520px;
+                    .square-holder{
+                        .square-fixed;
+                        margin: 120px 0 0 120px;
+                    }
+                    h3{
+                        padding: 15px 120px 30px 150px;
+                    }
+                    ul{
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        padding: 0 120px 105px;
+                        box-sizing: border-box;
+                        li{
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            margin-bottom: 15px;
+                            position: relative;
+                            .number{
+                                display: block;
+                                width: 20px;
+                                height: 20px;
+                                position: absolute;
+                                top: 2px;
+                                left: 0;
+                                font-size: .875em;
+                                text-align: center;
+                            }
+                            p{
+                                padding-left: 35px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service info end                          */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service contact start                     */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.service-container{
+    .contact-container{
+        padding-top: 60px;
+        .inner{
+            padding: 0 12.5%;
+            background: @lightGrey;
+            box-sizing: border-box;
+            overflow: hidden;
+            .square-holder{
+                .square-fixed;
+                margin-top: 60px;
+            }
+            h2{
+                padding: 15px 0 30px 30px;
+            }
+            .btn{ margin: 60px 0; }
+        }
+    }
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  service contact end                       */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive start                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media only screen @notebook{
+    
+    .service-container{
+        .information-container{
+            .photo-holder{
+                display: none;
+            }
+            .tabs-container{
+                width: 100%;
+                position: relative;
+                top: auto;
+                right: auto;
+                padding: 0 6.5%;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+}
+
+@media only screen @netbook{
+
+    .service-container{
+        .intro-container{
+            .intro-info-holder{
+                .info-holder{
+                    .square-holder{
+                        margin: 60px 0 0 60px;
+                    }
+                    h1{
+                        font-size: 2em;
+                        padding: 15px 60px 0 135px;
+                    }
+                }
+            }
+        }
+        .about-container{
+            .about-pane-holder{
+                padding: 60px 60px 45px 120px;
+                .square-holder{
+                    .square-fixed;
+                    margin-top: 30px;
+                }
+                h3{
+                    width: 180px;
+                    height: 60px;
+                    top: 240px;
+                    line-height: 60px;
+                    font-size: 1em;
+                }
+            }
+        }
+        .contact-container{
+            .inner{
+                .btn{ margin: 30px 0 60px; }
+            }
+        }
+    }
+
+}
+
+@media only screen @tablet{
+
+    #header{
+        .logo-holder{
+            background: @lightGrey;
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: translateX(0%);
+        }
+    }
+
+    .service-container{
+        height: auto;
+        min-height: auto;
+        .intro-container{
+            height: auto;
+            position: relative;
+            .intro-info-holder{
+                width: 100%;
+                padding: 0;
+                .photo-holder{
+                    height: auto;
+                    padding-top: 0;
+                    figure{
+                        position: relative;
+                    }
+                }
+                .info-holder{
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    padding: 0 60px;
+                    box-sizing: border-box;
+                    .square-holder{
+                        width: 30px;
+                        height: 30px;
+                        margin: 0;
+                    }
+                    h1{
+                        font-size: 2em;
+                        padding: 15px 0 0 0;
+                    }
+                }
+            }
+            .navigation-holder{
+                display: none;
+            }
+        }
+    }
+
+    .service-container{
+        .about-container{
+            .about-pane-holder{
+                width: 85%;
+                top: -75px;
+                left: 7.5%;
+                padding: 60px 60px 45px;
+                h2{ padding: 15px 0; }
+                h3{
+                    top: 0;
+                    left: 0;
+                    transform-origin: 0% 0%;
+                    transform: rotate(0deg);
+                }
+            }
+            .explanation-pane-holder{
+                width: 85%;
+                top: -105px;
+                left: 15%;
+                .square-holder{
+                    .square-fixed;
+                    margin: 60px 0 0 60px;
+                    background: @green;
+                }
+                h2{ padding: 15px 60px 0 60px; }
+            }
+        }
+    }
+
+    .service-container{
+        .information-container{
+            margin-top: -45px;
+            .tabs-container{
+                & > ul{
+                    width: 100%;
+                    margin-top: 0;
+                    li{
+                        width: 20%;
+                        float: left;
+                    }
+                }
+                .tab-content-holder{
+                    width: 100%;
+                    .tab-content{
+                        min-height: auto;
+                        .square-holder{  margin: 60px 0 0 60px; }
+                        h3{ padding: 15px 60px 30px 60px; }
+                        ul{
+                            padding: 0 60px 45px;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .service-container{
+        .contact-container{
+            padding-top: 60px;
+            .inner{
+                padding: 0 60px;
+                background: @lightGrey;
+                box-sizing: border-box;
+                overflow: hidden;
+                .square-holder{
+                    .square-fixed;
+                    margin-top: 30px;
+                }
+                h2{
+                    padding: 15px 0 15px 0px;
+                }
+                .btn{ margin: 30px 0; }
+            }
+        }
+    }
+
+}
+
+@media only screen @phoneL{
+    
+    #header{
+        position: relative;
+    }
+
+    .service-container{
+        .intro-container{
+            .intro-info-holder{
+                .photo-holder{
+                    display: none;
+                }
+                .info-holder{
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    padding: 0 30px;
+                    transform: translateY(0%);
+                    box-sizing: border-box;
+                    .square-holder{
+                        display: block;
+                        width: 30px;
+                        height: 30px;
+                        margin: 60px 0 0 0;
+                        background: @yellow;
+                    }
+                    h1{
+                        font-size: 1.875em;
+                        color: @darkGrey;
+                        padding: 15px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .service-container{
+        .about-container{
+            margin-top: 60px;
+            padding: 0 30px;
+            box-sizing: border-box;
+            .about-pane-holder{
+                width: 100%;
+                top: 0;
+                left: 0;
+                padding: 30px 30px 15px 30px;
+                background: @lightGrey;
+                box-sizing: border-box;
+                overflow: hidden;
+                .square-holder{
+                    .square-fixed;
+                    margin-top: 30px;
+                }
+                h3{
+                    font-size: .875em;
+                    height: 45px;
+                    line-height: 45px;
+                }
+            }
+            .explanation-pane-holder{
+                width: 100%;
+                top: 0;
+                left: 0;
+                margin-top: 30px;
+                .square-holder{ margin: 30px 0 0 30px; }
+                h2{
+                    font-size: 1em;
+                    padding: 15px 30px 0 30px;
+                }
+                p{ padding: 30px; }
+            }
+        }
+    }
+
+    .service-container{
+        .information-container{
+            margin-top: 60px;
+            .tabs-container{
+                & > ul{
+                    li{
+                        width: 100%;
+                        height: 45px;
+                        span{
+                            font-size: .875em;
+                            line-height: 45px;
+                        }
+                    }
+                }
+                .tab-content-holder{
+                    .tab-content{
+                        .square-holder{
+                            margin: 30px 0 0 30px;
+                        }
+                        h3{ padding: 15px 30px; }
+                        ul{ padding: 0 30px; }
+                    }
+                }
+            }
+        }
+    }
+
+    .service-container{
+        .contact-container{
+            .inner{
+                padding: 0 30px;
+            }
+        }
+    }
+
+}
+
+@media only screen @phoneS{
+
+    .service-container{
+        .intro-container{
+            .intro-info-holder{
+                .info-holder{
+                    .square-holder{ display: none; }
+                    h1{
+                        font-size: 1.5em;
+                        padding-top: 60px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*  adaptive end                              */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
