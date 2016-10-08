@@ -1,0 +1,17 @@
+{# hgbd_project/hgbd/website/templates/website/components/prefooter.html #}
+{% load website_helpers %}
+
+<section class="container contact-container">
+    <div class="inner">
+        <span class="square-holder"></span>
+        <h2>{{ content_for_get_in_touch.title }}</h2>
+
+        {% paragraphize content_for_get_in_touch.text '<p>' '</p>' %}
+
+        <div class="btn">
+            <a href="{% url 'website:cooperation' %}">
+                {{ content_for_get_in_touch.link_title }}
+            </a>
+        </div>
+    </div>
+</section>

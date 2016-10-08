@@ -4,21 +4,261 @@
 {% load staticfiles i18n website_helpers %}
 
 {% block title %}
-    {{ METADATA.title }} | {% trans 'HG Business Development' noop %}
+    {{ service.title }} | {{ METADATA.title }} | {% trans 'HG Business Development' noop %}
 {% endblock %}
 
 {% block meta %}
     {{ block.super }}
-    <meta name="Description" content="{{ METADATA.description }}">
-    <meta name=“robots” content="{{ METADATA.robots }}">
+    <meta name="description" content="{{ service.description }}">
+    <meta name="robots" content="{{ METADATA.robots }}">
+    {# Open Graph #}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{{ service.title }} | {{ METADATA.title }} | {% trans 'HG Business Development' noop %}">
+    <meta property="og:description" content="{{ service.description }}">
+    <meta property="og:image" content="{{ request|absolute_url }}{% static 'website/images/logo.jpg' %}">
 {% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'website/css/service.bundle.min.css' %}">
 {% endblock %}
 
 {% block body %}
-    Сервіс
+    <div id="page">
+        <main id="content">
+            <article class="container service-container">
+
+                {% include 'website/components/header.html' with request=request contacts=contacts only %}
+
+                <section class="container intro-container">
+                    <div class="navigation-holder">
+                        <div class="navigation">
+                            <a href="#" class="nav-btn prev">
+                                <figure><img src="build/images/services/thumb/investments.jpg" alt="investments"></figure>
+                                <div class="link">
+                                    <span class="arrow svg-holder">
+                                        <svg viewBox="0 0 30 14">
+                                            <path class="shaft" d="M29.15,7.5H0v-1H29.15L29.67,7Z"/>
+                                            <path class="arrowhead" d="M21.5,0H23l7,7-7,7H21.5l7-7Z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="text">Попередній</span>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-btn next">
+                                <figure><img src="build/images/services/thumb/structure.jpg" alt="structure"></figure>
+                                <div class="link">
+                                    <span class="text">Наступний</span>
+                                    <span class="arrow svg-holder">
+                                        <svg viewBox="0 0 30 14">
+                                            <path class="shaft" d="M29.15,7.5H0v-1H29.15L29.67,7Z"/>
+                                            <path class="arrowhead" d="M21.5,0H23l7,7-7,7H21.5l7-7Z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="intro-info-holder">
+                        <div class="photo-holder">
+                            <figure>
+                                <img src="{% static 'website/images/services/' %}{{ service.image_main }}" alt="{{ service.title }}">
+                            </figure>
+                        </div>
+                        <div class="info-holder">
+                            <span class="square-holder"></span>
+                            <h1>Залучення інвестицій в аграрний сектор держави із застосуванням нового механізму <span>аграрних розписок</span></h1>
+                        </div>
+                    </div>
+                </section>
+                <section class="container about-container">
+                    <div class="about-pane-holder">
+                        <span class="square-holder"></span>
+                        <h2>аграрні розписки</h2>
+                        <h3>о розписках</h3>
+                        <p>Консалтингова компанія «ЕйджДжи Бізнес Девелопмент» надає повний спектр правових, фінансових та інших аналітичних послуг щодо залучення інвестицій в аграрному секторі нашої країни, в тому числі із використанням нового інноваційного механізму аграрних розписок.</p>
+                        <p>Ми забезпечуємо повний консалтинг і супровід усіх в першу чергу юридичних та інших необхідних організаційних заходів, що пов’язані з обігом аграрних розписок та їх застосуванні на практиці.</p>
+                        <p>Наша Компанія є активним учасником та професійним радником з правових та інших питань в аграрномусекторі держави, яка завжди якісно і своєчасно забезпечить Вам належний і високий професійний рівень надання послуг за Вашим зверненням чи замовленням.</p>
+                    </div>
+                    <div class="explanation-pane-holder">
+                        <span class="square-holder"></span>
+                        <h2>Аграрна розписка</h2>
+                        <p>Це товаророзпорядчий документ, що фіксує безумовне зобов’язання боржника, яке забезпечується заставою, здійснити поставку сільськогосподарської продукції або сплатити грошові кошти на визначених у ньому умовах</p>
+                    </div>
+                </section>
+                <section class="container information-container">
+                    <div class="photo-holder">
+                        <figure>
+                            <img src="build/images/services/wheat.jpg" alt="wheat">
+                        </figure>
+                    </div>
+                    <div class="tabs-container">
+                        <ul>
+                            <li class="tab-label active">
+                                <span>Переваги</span>
+                            </li>
+                            <li class="tab-label">
+                                <span>Послуги</span>
+                            </li>
+                            <li class="tab-label">
+                                <span>Особливості</span>
+                            </li>
+                            <li class="tab-label">
+                                <span>Передумови</span>
+                            </li>
+                            <li class="tab-label">
+                                <span>Гарантії</span>
+                            </li>
+                        </ul>
+                        <div class="tab-content-holder">
+                            <div class="tab-content active">
+                                <span class="square-holder"></span>
+                                <h3>Переваги аграрних розписок</h3>
+                                <ul>
+                                    <li>
+                                        <span class="number">01.</span>
+                                        <p>Є ефективним механізмом залучення як правило коротко- та середньострокового інвестування в сільське господарство</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">02.</span>
+                                        <p>Простота і доступність оформлення процесів фінансового інвестування, із залученням професійних нотаріусів (підключених до відповідного реєстру)</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">03.</span>
+                                        <p>Можливість створення кредитних історій аграріїв-позичальників та подальший їх моніторинг в загальнодоступній мережі</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">04.</span>
+                                        <p>Швидкий та позасудовий спосіб звернення стягнення на предмет застави</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">05.</span>
+                                        <p>Свобода вибору інвесторів чи постачальників, які стануть в подальшому добросовісними кредиторами агровиробника</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">06.</span>
+                                        <p>Підвищення якісних показників виробничих процесів аграрників та зниження потенційних ризиків щодо невиконання взятих ними на себе зобов’язань за аграрними розписками</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <span class="square-holder"></span>
+                                <h3>Послуги в сфері аграрних розписок</h3>
+                                <ul>
+                                    <li>
+                                        <span class="number">01.</span>
+                                        <p>Юридичний, фінансовий та організаційний супровід операцій, пов'язаних із застосуванням аграрних розписок</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">02.</span>
+                                        <p>Фінансовий консалтинг та правовий супровід усіх питань, пов'язаних з аграрними та іншими напрямками діяльності клієнтів</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">03.</span>
+                                        <p>Ззалучення інвестицій в аграрну сферу та професійний супровід усіх процесів, пов'язаних з можливими механізмами фінансування</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <span class="square-holder"></span>
+                                <h3>Особливості застосування аграрних розписок</h3>
+                                <ul>
+                                    <li>
+                                        <span class="number">01.</span>
+                                        <p>Аграрна розписка це свого роду новий інноваційний спосіб залучення фінансування агровиробників під заставу майбутнього урожаю. Обіг аграрних розписок в Україні регулюється Законом України «Про аграрні розписки». </p>
+                                    </li>
+                                    <li>
+                                        <span class="number">02.</span>
+                                        <p>Аграрна розписка не є цінним папером, а тому, її використання в господарській діяльності не обмежено і не регулюється законодавством про розміщення та обіг цінних паперів</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">03.</span>
+                                        <p>Аграрна розписка підлягає обов’язковому нотаріальному посвідченню</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">04.</span>
+                                        <p>Інформація про забезпечувальні механізми по аграрній розписці (напр. застава урожаю) – є публічною і відкритою</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">05.</span>
+                                        <p>За аграрною розпискою кредитор (інвестор) може надавати агровиробнику гроші та/або товар</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">06.</span>
+                                        <p>Боржник за аграрною розпискою, повинен бути законним володільцем землі сільськогосподарського призначення, що повинно підтверджуватися належними правовстановлюючими документами</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <span class="square-holder"></span>
+                                <h3>Передумови введення механізму аграрних розписок</h3>
+                                <ul>
+                                    <li>
+                                        <span class="number">01.</span>
+                                        <p>Позитивний досвід застосування на практиці в Бразилії</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">02.</span>
+                                        <p>Постійна нагальність поповнення обігових коштів агровиробників та необхідність інвестицій в сільському господарстві</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">03.</span>
+                                        <p>Сезонність виробничого процесу в сільському господарстві та певні коливання на фінансових і товарних ринках держави</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">04.</span>
+                                        <p>Відсутність прозорості механізмів фінансування аграрного сектору до цього часу</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">05.</span>
+                                        <p>Суттєві ризики інвесторів та інших кредиторів щодо своєчасного і повного повернення коштів (товарів) у сфері аграрного виробництва</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">06.</span>
+                                        <p>Необхідність позитивної інвестиційної історії національних товаровиробників-аграріїв, з метою залучення більш значних обсягів інвестицій в аграрний сектор як на національному, так і на міжнародному рівні</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <span class="square-holder"></span>
+                                <h3>Гарантії та способи забезпечення за аграрними розписками</h3>
+                                <ul>
+                                    <li>
+                                        <span class="number">01.</span>
+                                        <p>Застава сільськогосподарської продукції та переважне право кредитора за аграрною розпискою на звернення стягнення на предмет застави</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">02.</span>
+                                        <p>Доступність моніторингу виробничих циклів і технологій майбутнього врожаю сільськогосподарської продукції</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">03.</span>
+                                        <p>Можливість відсторонення кредитором боржника від процесів вирощення продукції, самостійне дорощування її та контрольований збір власними силами</p>
+                                    </li>
+                                    <li>
+                                        <span class="number">04.</span>
+                                        <p>Право кредитора на врожай наступного року, у разі втрати посівів поточного маркетингового року</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include 'website/components/prefooter.html' with content_for_get_in_touch=content.get_in_touch only %}
+
+                {% include 'website/components/footer_container.html' with contacts=contacts only %}
+
+            </article>
+        </main>
+    </div>
+
+    {% include 'website/components/loader.html' only %}
+
+    {% include 'website/components/landscape.html' only %}
+
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{% static 'website/js/service.bundle.min.js' %}"></script>
 {% endblock %}

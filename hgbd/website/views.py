@@ -39,9 +39,6 @@ def index(request):
     employees = get_list_or_404(Employee)
     services = get_list_or_404(Service)
 
-    import pprint
-    pprint.pprint(vars(content['team']))
-
     return render(request, 'website/index.html', {
         'content': content,
         'numbers': numbers,
@@ -55,7 +52,26 @@ def index(request):
 
 def service(request, pk, slug=None):
     ''' Service '''
-    return render(request, 'website/service.html')
+    content = {
+        block.get_template_block_name(): block for block in [
+            GetInTouchContent.objects.first(),
+        ]
+    }
+
+    service = get_object_or_404(
+        Service.objects.prefetch_related(
+            'servicelist_set__servicelistitem_set'
+        ),
+        pk=pk
+    )
+
+    contacts = get_object_or_404(Contact)
+
+    return render(request, 'website/service.html', {
+        'content': content,
+        'service': service,
+        'contacts': contacts,
+    })
 
 
 def cooperation(request):

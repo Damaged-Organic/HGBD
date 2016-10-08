@@ -7,10 +7,14 @@
             <img src="{% static 'website/images/logo.png' %}" alt="HG Business Development logo">
         </a>
     </div>
-    <div class="phone-holder">
-        <span class="square-holder"></span>
-        <span class="phone-code-holder">{{ contacts.get_phone_code }}</span>
-        <a href="tel:+{{ contacts.phone|sift_digits }}">{{ contacts.get_phone_number }}</a>
-        <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
-    </div>
+
+    {% with request.resolver_match.url_name as current_url %}
+        <div class="phone-holder {% if current_url != 'index' %}black{% endif %}">
+            <span class="square-holder"></span>
+            <span class="phone-code-holder">{{ contacts.get_phone_code }}</span>
+            <a href="tel:+{{ contacts.phone|sift_digits }}">{{ contacts.get_phone_number }}</a>
+            <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+        </div>
+    {% endwith %}
+
 </header>
