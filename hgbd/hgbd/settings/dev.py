@@ -11,13 +11,17 @@ INSTALLED_APPS += [
     'debug_toolbar',
 ]
 
+MIDDLEWARE_CLASSES += [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
 # Database
 
 DATABASES['default'].update({
     'HOST':     'localhost',
     'PORT':     '3306',
-    'USER':     'hgbd',
-    'PASSWORD': 'hgbd',
+    'USER':     'root',
+    'PASSWORD': 'root',
 })
 
 # Email

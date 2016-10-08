@@ -1,28 +1,18 @@
 {# hgbd_project/hgbd/website/templates/website/components/footer_container.html #}
-{% load staticfiles i18n website_helpers %}
+{% load website_helpers %}
 
 <div id="footer-container">
+    <span class="square-holder"></span>
+    <div class="phone-holder">
+        <a href="tel:+{{ contacts.phone|sift_digits }}">{{ contacts.phone }}</a>
+    </div>
+    <div class="mail-holder">
+        <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+    </div>
+    <p>{{ contacts.address }}</p>
 
-    {% include 'website/components/footer.html' with contacts=contacts only %}
+    {% include 'website/components/footer.html' only %}
 
-    <footer>
-        <figure>
-            <a href="http://cheersunlimited.com.ua" title="CHEERS - Unlimited Web Production" target="_blank">
-                <img src="{% static 'website/images/cheers-logo.png' %}" alt="CHEERS - Unlimited Web Production logo">
-            </a>
-        </figure>
-        <small>
-
-            {% filter interpolate_with_timeline:'2016' %}
-
-                {% blocktrans %}
-                    © HG Business Development, %s.
-                    Web production by <a href="http://cheersunlimited.com.ua" target="_blank">CHEERS</a>
-                {% endblocktrans %}
-
-            {% endfilter %}
-        </small>
-    </footer>
     <div id="scroll-top-btn">
         <span class="arrow"></span>
     </div>
