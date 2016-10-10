@@ -1,11 +1,12 @@
 # hgbd_project/hgbd/website/admin.py
 from django import forms
+from django.db import models
 from django.contrib import admin
+from django.utils.html import escape
+from django.conf import settings
 
 import nested_admin
 from transmeta import canonical_fieldname
-
-from django.db import models
 
 from hgbd.admin import (
     admin_site, DefaultOrderingModelAdmin,
@@ -186,14 +187,14 @@ class BenefitAdmin(
 class ContactAdmin(
     ForbidAddMixin, ForbidDeleteMixin, DefaultOrderingModelAdmin
 ):
-    list_display = ('email', 'phone', 'address_uk', )
+    list_display = ('email', 'phone', 'address_legal_uk', 'address_post_uk', )
 
     fieldsets = (
         (None, {
             'fields': ('email', 'phone', )
         }),
         ('Локалізована інформація', {
-            'fields': ('address_uk', ),
+            'fields': ('address_legal_uk', 'address_post_uk', ),
         }),
     )
 
@@ -203,7 +204,7 @@ class ContactAdmin(
         )
         db_fieldname = canonical_fieldname(db_field)
 
-        if db_fieldname == 'address':
+        if db_fieldname in ['address_legal', 'address_post']:
             field.widget = forms.TextInput(attrs={
                 'style': 'width:50%; max-width:50%;'
             })
@@ -236,7 +237,8 @@ class EmployeeAdmin(
 class ServiceListItemInline(nested_admin.NestedStackedInline):
     model = ServiceListItem
     fields = (
-        'text_uk',
+        # 'text_uk',
+        'text',
     )
     extra = 0
 
@@ -283,18 +285,36 @@ class ServiceListInline(
 class ServiceAdmin(
     ForbidAddMixin, ForbidDeleteMixin, nested_admin.NestedModelAdmin
 ):
-    readonly_fields = ('id', 'image_main_thumb', 'image_list_thumb', )
+    readonly_fields = (
+        'id',
+        'image_main_preview', 'image_main_thumb_preview', 'image_list_preview',
+    )
     list_display = ('id', 'title_uk', 'headline_uk', )
     list_display_links = ('title_uk', )
     ordering = ('id', )
 
+    fieldset_fields = (
+        'image_main_preview',
+        'image_main_thumb_preview',
+        'image_list_preview',
+    )
+
+    '''
+    Adding file fields to fieldset if application is running
+    in DEBUG mode to allow developer-only image uploading
+    '''
+    if settings.DEBUG is True:
+        fieldset_fields = (
+            *fieldset_fields, 'image_main', 'image_main_thumb', 'image_list',
+        )
+
     fieldsets = (
         (None, {
-            'fields': ('image_main_thumb', 'image_list_thumb', ),
+            'fields': fieldset_fields,
         }),
         ('Локалізована інформація', {
             'fields': (
-                'title_uk', 'headline_uk', 'description_uk',
+                'title_uk', 'description_uk', 'headline_uk',
                 'about_label_uk', 'about_description_uk',
                 'hint_title_uk', 'hint_description_uk',
             ),
@@ -313,15 +333,28 @@ class ServiceAdmin(
 
         if db_fieldname in ['title', 'headline']:
             field.widget = forms.TextInput(attrs={
-                'style': 'width:40%; max-width:40%;'
+                'style': 'width:50%; max-width:50%;'
             })
 
-        if db_fieldname in ['description', 'hint_description']:
+        if db_fieldname == 'headline':
+            field.help_text = escape(
+                """
+                Можливе використання тегу '<span>' для
+                надання тексту кольорового акценту
+                """
+            )
+
+        if db_fieldname == 'description':
+            field.widget = forms.Textarea(attrs={
+                'style': 'resize:none', 'cols': '100', 'rows': '2'
+            })
+
+        if db_fieldname == 'hint_description':
             field.widget = forms.Textarea(attrs={
                 'style': 'resize:none', 'cols': '100', 'rows': '5'
             })
 
-        if db_fieldname in ['about_description']:
+        if db_fieldname == 'about_description':
             field.widget = forms.Textarea(attrs={
                 'style': 'resize:none', 'cols': '100', 'rows': '10'
             })

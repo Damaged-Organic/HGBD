@@ -34,10 +34,9 @@ def index(request):
 
     numbers = get_list_or_404(Number)
     benefits = get_list_or_404(Benefit)
-    contacts = get_object_or_404(Contact)
-
     employees = get_list_or_404(Employee)
     services = get_list_or_404(Service)
+    contacts = get_object_or_404(Contact)
 
     return render(request, 'website/index.html', {
         'content': content,
@@ -76,10 +75,20 @@ def service(request, pk, slug=None):
 
 def cooperation(request):
     ''' Cooperation '''
+    content = {
+        block.get_template_block_name(): block for block in [
+            GetInTouchContent.objects.first(),
+        ]
+    }
+
+    contacts = get_object_or_404(Contact)
+
     form = CooperationForm(request=request)
 
     return render(request, 'website/cooperation.html', {
-        'form': form
+        'content': content,
+        'contacts': contacts,
+        'form': form,
     })
 
 

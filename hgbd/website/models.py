@@ -1,9 +1,12 @@
 import re
 
 from django.db import models
+from django.utils.safestring import mark_safe
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.text import slugify
 
 from transmeta import TransMeta
+from transliterate import translit
 
 """
 Hack to order models in Django Admin. Whitespaces assigned in nested Meta
@@ -170,7 +173,8 @@ class Benefit(models.Model, metaclass=TransMeta):
 class Contact(models.Model, metaclass=TransMeta):
     email = models.CharField('E-mail', max_length=254)
     phone = models.CharField('Телефон', max_length=19)
-    address = models.CharField('Адреса', max_length=300)
+    address_legal = models.CharField('Юридична адреса', max_length=300)
+    address_post = models.CharField('Адреса для листування', max_length=300)
 
     class Meta:
         db_table = get_table_name('contacts')
@@ -180,7 +184,7 @@ class Contact(models.Model, metaclass=TransMeta):
         verbose_name = 'Контакт'
         verbose_name_plural = order_prefix + 'Контакти'
 
-        translate = ('address', )
+        translate = ('address_legal', 'address_post', )
 
     def __str__(self):
         return self._meta.verbose_name or self.__name__
@@ -232,11 +236,14 @@ class Employee(models.Model, metaclass=TransMeta):
 
 class Service(models.Model, metaclass=TransMeta):
     IMAGE_PATH_MAIN = 'service/images/main/'
+    IMAGE_PATH_MAIN_THUMB = 'service/images/main/thumb/'
     IMAGE_PATH_LIST = 'service/images/list/'
 
+    slug = models.SlugField(editable=False)
+
     title = models.CharField('Заголовок', max_length=100)
+    description = models.CharField('Короткий опис', max_length=500, null=True)
     headline = models.CharField('Слоган', max_length=200)
-    description = models.CharField('Короткий опис', max_length=500)
 
     about_label = models.CharField('Ярлик', max_length=20)
     about_description = models.TextField('Детальний опис', max_length=1500)
@@ -245,10 +252,21 @@ class Service(models.Model, metaclass=TransMeta):
     hint_description = models.CharField('Текст визначення', max_length=500)
 
     image_main = models.ImageField(
-        'Головне зображення', upload_to=IMAGE_PATH_MAIN, null=True
+        'Головне зображення',
+        upload_to=IMAGE_PATH_MAIN,
+        null=True,
+        blank=True
+    )
+    image_main_thumb = models.ImageField(
+        'Мініатюра головного зображення',
+        upload_to=IMAGE_PATH_MAIN_THUMB,
+        null=True
     )
     image_list = models.ImageField(
-        'Зображення до списку', upload_to=IMAGE_PATH_LIST, null=True
+        'Зображення до списку',
+        upload_to=IMAGE_PATH_LIST,
+        null=True,
+        blank=True
     )
 
     class Meta:
@@ -268,15 +286,32 @@ class Service(models.Model, metaclass=TransMeta):
     def __str__(self):
         return self.title or self.__name__
 
-    def image_main_thumb(self):
-        return '<img src="%s" width="400">' % (self.image_main.url)
-    image_main_thumb.allow_tags = True
-    image_main_thumb.short_description = 'Превʼю головного зображення'
+    def save(self, *args, **kwargs):
+        if self.title:
+            transliterated = translit(self.title, reversed=True)
+            self.slug = slugify(transliterated).replace('-', '_')
 
-    def image_list_thumb(self):
+        super(Service, self).save(*args, **kwargs)
+
+    def get_service_lists(self):
+        return self.servicelist_set.all()
+
+    def image_main_preview(self):
+        return '<img src="%s" width="400">' % (self.image_main.url)
+    image_main_preview.allow_tags = True
+    image_main_preview.short_description = 'Превʼю головного зображення'
+
+    def image_main_thumb_preview(self):
+        return '<img src="%s" width="400">' % (self.image_main_thumb.url)
+    image_main_thumb_preview.allow_tags = True
+    image_main_thumb_preview.short_description = (
+        'Превʼю мініатюри головного зображення'
+    )
+
+    def image_list_preview(self):
         return '<img src="%s" width="400">' % (self.image_list.url)
-    image_list_thumb.allow_tags = True
-    image_list_thumb.short_description = 'Превʼю зображення до списку'
+    image_list_preview.allow_tags = True
+    image_list_preview.short_description = 'Превʼю зображення до списку'
 
 
 class ServiceList(models.Model, metaclass=TransMeta):
@@ -298,8 +333,12 @@ class ServiceList(models.Model, metaclass=TransMeta):
     def __str__(self):
         return self.label or self.__name__
 
+    def get_service_list_items(self):
+        return self.servicelistitem_set.all()
 
-class ServiceListItem(models.Model, metaclass=TransMeta):
+
+# class ServiceListItem(models.Model, metaclass=TransMeta):
+class ServiceListItem(models.Model):
     text = models.CharField('Опис пункту', max_length=500)
 
     service_list = models.ForeignKey(
@@ -312,7 +351,7 @@ class ServiceListItem(models.Model, metaclass=TransMeta):
         verbose_name = 'Пункт списку характеристик сервісу'
         verbose_name_plural = 'Пункти списку характеристик сервісу'
 
-        translate = ('text', )
+        # translate = ('text', )
 
     def __str__(self):
         return self.text or self.__name__

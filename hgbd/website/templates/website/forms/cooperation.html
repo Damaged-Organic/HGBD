@@ -1,11 +1,27 @@
 {# hgbd_project/hgbd/website/templates/website/forms/cooperation.html #}
-<form action="{% url 'website:cooperation_send' %}" method="POST">
+{% load i18n %}
+
+<form action="{% url 'website:cooperation_send' %}" method="POST" id="feedback-form" novalidate>
     {% csrf_token %}
 
-    {{ form.name }}
-    {{ form.email }}
-    {{ form.message }}
+    <div id="response-holder" data-close-notify="клацніть щоб закрити"></div>
+
+    <div class="field-holder">
+        {{ form.name }}
+    </div>
+    <div class="field-holder">
+        {{ form.email }}
+    </div>
+    <div class="field-holder">
+        {{ form.message }}
+    </div>
+
     {{ form.honeypot }}
 
-    <input type="submit" value="Submit" />
+    <button type="submit" class="ajax-loading" id="feedback-btn">
+        <span class="text">{% trans 'Надіслати' %}</span>
+        <span class="loading-holder">
+            <span></span>
+        </span>
+    </button>
 </form>

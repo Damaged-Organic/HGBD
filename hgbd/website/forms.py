@@ -25,7 +25,7 @@ class CooperationForm(MailerMixin, forms.Form):
 
         # Name
         self.fields['name'].label = _('Імʼя')
-        self.fields['name'].widget.args = {
+        self.fields['name'].widget.attrs = {
             'placeholder': _('Введіть імʼя'),
             'data-rule-required': 'true',
             'data-msg-required': _('Будь ласка, введіть імʼя'),

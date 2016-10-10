@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nested_admin',
+    'django_bleach',
     'metadata.apps.MetadataConfig',
     'website.apps.WebsiteConfig',
 ]
@@ -97,7 +98,7 @@ LANGUAGES = (
 
 TRANSMETA_DEFAULT_LANGUAGE = 'uk'
 
-SOLID_I18N_USE_REDIRECTS = False
+# SOLID_I18N_USE_REDIRECTS = False
 
 TIME_ZONE = 'Europe/Kiev'
 
@@ -122,6 +123,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
+
+# Bleach
+
+BLEACH_ALLOWED_TAGS = ['span']
+BLEACH_STRIP_TAGS = True
 
 # Socials
 

@@ -11,16 +11,95 @@
     {{ block.super }}
     <meta name="Description" content="{{ METADATA.description }}">
     <meta name=“robots” content="{{ METADATA.robots }}">
+    {# Open Graph #}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{{ METADATA.title }} | {% trans 'HG Business Development' noop %}">
+    <meta property="og:description" content="{{ METADATA.description }}">
+    <meta property="og:image" content="{{ request|absolute_url }}{% static 'website/images/logo.jpg' %}">
 {% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'website/css/contacts.bundle.min.css' %}">
 {% endblock %}
 
 {% block body %}
-    Співробітництво
+    <div id="page">
+        <main id="content">
 
-    {% include 'website/forms/cooperation.html' with form=form %}
+            {% include 'website/components/header.html' with request=request contacts=contacts only %}
+
+            <section class="container contacts-intro-container">
+
+                {% with content.get_in_touch as content_for_get_in_touch %}
+                    <div class="inner">
+                        <div class="info-holder">
+                            <div class="bg-photo-holder"></div>
+                            <div class="info">
+                                <span class="square-holder"></span>
+                                <h1>{{ content_for_get_in_touch.title }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                {% endwith %}
+
+                <div class="contact-info-holder">
+                    <h2>{% trans 'Контакти' %}</h2>
+                    <ul>
+                        <li>
+                            <span class="square-holder"></span>
+                            <span class="upper-title">{% trans 'Телефон' %}</span>
+                            <a href="tel:+{{ contacts.phone|sift_digits }}">{{ contacts.phone }}</a>
+                        </li>
+                        <li>
+                            <span class="square-holder"></span>
+                            <span class="upper-title">{% trans 'E-mail' %}</span>
+                            <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>
+                        </li>
+                        <li>
+                            <span class="square-holder"></span>
+                            <span class="upper-title">{% trans 'Юридична адреса' %}</span>
+                            <p>{{ contacts.address_legal }}</p>
+                        </li>
+                        <li>
+                            <span class="square-holder"></span>
+                            <span class="upper-title">{% trans 'Адреса для листування' %}</span>
+                            <p>{{ contacts.address_post }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="container feedback-container">
+                <div class="form-holder">
+                    <div class="inner">
+                        <span class="square-holder"></span>
+                        <h2>{% trans 'Напишіть нам' %}</h2>
+                        <p>
+
+                            {% blocktrans %}
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a dignissim enim. Nullam blandit massa nec accumsan ornare. Sed eros risus, lobortis vitae felis et, dignissim pharetra purus
+                            {% endblocktrans %}
+
+                        </p>
+
+                        {% include 'website/forms/cooperation.html' with form=form %}
+
+                    </div>
+                </div>
+                <div id="map"></div>
+            </section>
+
+            {% include 'website/components/footer.html' only %}
+
+        </main>
+    </div>
+
+    {% include 'website/components/loader.html' only %}
+
+    {% include 'website/components/landscape.html' only %}
+
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{% static 'website/js/contacts.bundle.min.js' %}"></script>
 {% endblock %}
