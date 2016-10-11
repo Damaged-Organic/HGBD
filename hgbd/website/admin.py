@@ -231,15 +231,30 @@ class EmployeeAdmin(
         }),
     )
 
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        field = super(EmployeeAdmin, self).formfield_for_dbfield(
+            db_field, **kwargs
+        )
+        db_fieldname = canonical_fieldname(db_field)
+
+        if db_fieldname == 'photo':
+            field.help_text = escape(
+                """
+                Рекомендований розмір фотографії - 480x480 пікселів
+                """
+            )
+
+        return field
+
 
 # Service
 
 class ServiceListItemInline(nested_admin.NestedStackedInline):
     model = ServiceListItem
-    fields = (
-        # 'text_uk',
-        'text',
-    )
+    # TODO: should find the way to bypass transmeta & nested_admin error
+    # when translated field present in nested admin view. Leaving default
+    # field value for now
+    fields = ('text', )
     extra = 0
 
     formfield_overrides = {
@@ -248,7 +263,9 @@ class ServiceListItemInline(nested_admin.NestedStackedInline):
         })},
     }
 
-    # Custom template to display numerated tabular inline
+    '''
+    Custom template to display enumerated tabular inline
+    '''
     template = "admin/inlines/tabular.html"
 
 
@@ -256,12 +273,9 @@ class ServiceListInline(
     ForbidAddMixin, ForbidDeleteMixin, nested_admin.NestedTabularInline
 ):
     model = ServiceList
+    fields = ('label_uk', 'title_uk', )
     max_num = 5
     extra = 0
-
-    fields = (
-        'label_uk', 'title_uk',
-    )
 
     inlines = [
         ServiceListItemInline,
@@ -293,24 +307,14 @@ class ServiceAdmin(
     list_display_links = ('title_uk', )
     ordering = ('id', )
 
-    fieldset_fields = (
-        'image_main_preview',
-        'image_main_thumb_preview',
-        'image_list_preview',
-    )
-
-    '''
-    Adding file fields to fieldset if application is running
-    in DEBUG mode to allow developer-only image uploading
-    '''
-    if settings.DEBUG is True:
-        fieldset_fields = (
-            *fieldset_fields, 'image_main', 'image_main_thumb', 'image_list',
-        )
-
     fieldsets = (
         (None, {
-            'fields': fieldset_fields,
+            'fields': (
+                'image_main', 'image_main_thumb', 'image_list',
+                'image_main_preview',
+                'image_main_thumb_preview',
+                'image_list_preview',
+            ),
         }),
         ('Локалізована інформація', {
             'fields': (

@@ -11,12 +11,12 @@
     {{ block.super }}
     <meta name="description" content="{{ service.description }}">
     <meta name="robots" content="{{ METADATA.robots }}">
-    {# Open Graph #}
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% endblock %}
+
+{% block open_graph %}
+    {{ block.super }}
     <meta property="og:title" content="{{ service.title }} | {{ METADATA.title }} | {% trans 'HG Business Development' noop %}">
     <meta property="og:description" content="{{ service.description }}">
-    <meta property="og:image" content="{{ request|absolute_url }}{% static 'website/images/logo.jpg' %}">
 {% endblock %}
 
 {% block stylesheets %}
@@ -31,34 +31,6 @@
                 {% include 'website/components/header.html' with request=request contacts=contacts only %}
 
                 <section class="container intro-container">
-                    <div class="navigation-holder">
-                        <div class="navigation">
-                            <a href="#" class="nav-btn prev">
-                                <figure><img src="build/images/services/thumb/investments.jpg" alt="investments"></figure>
-                                <div class="link">
-                                    <span class="arrow svg-holder">
-                                        <svg viewBox="0 0 30 14">
-                                            <path class="shaft" d="M29.15,7.5H0v-1H29.15L29.67,7Z"/>
-                                            <path class="arrowhead" d="M21.5,0H23l7,7-7,7H21.5l7-7Z"/>
-                                        </svg>
-                                    </span>
-                                    <span class="text">Попередній</span>
-                                </div>
-                            </a>
-                            <a href="#" class="nav-btn next">
-                                <figure><img src="build/images/services/thumb/structure.jpg" alt="structure"></figure>
-                                <div class="link">
-                                    <span class="text">Наступний</span>
-                                    <span class="arrow svg-holder">
-                                        <svg viewBox="0 0 30 14">
-                                            <path class="shaft" d="M29.15,7.5H0v-1H29.15L29.67,7Z"/>
-                                            <path class="arrowhead" d="M21.5,0H23l7,7-7,7H21.5l7-7Z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                     <div class="intro-info-holder">
                         <div class="photo-holder">
                             <figure>

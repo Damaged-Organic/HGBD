@@ -6,10 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from .services.mailer import MailerMixin
 
-datetime_format = '%d-%m-%Y %H:%M'
-
 
 class CooperationForm(MailerMixin, forms.Form):
+    DATETIME_FORMAT = '%d-%m-%Y %H:%M'
+
     name = forms.CharField(min_length=2, max_length=250)
     email = forms.EmailField(max_length=254)
     message = forms.CharField(
@@ -86,7 +86,7 @@ class CooperationForm(MailerMixin, forms.Form):
 
         subject = (
             'Повідомлення з сайту HG Business Development, ' +
-            sent_at.strftime(datetime_format)
+            sent_at.strftime(self.DATETIME_FORMAT)
         )
         template = 'website/emails/cooperation.html'
         context = {

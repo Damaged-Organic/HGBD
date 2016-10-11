@@ -1,7 +1,7 @@
 {# hgbd_project/hgbd/website/templates/layout.html #}
 {% extends 'base.html' %}
 
-{% load staticfiles %}
+{% load staticfiles website_helpers %}
 
 {% block meta %}
     {{ block.super }}
@@ -17,6 +17,12 @@
     <meta name="apple-mobile-web-app-title" content="">
     <meta http-equiv="cleartype" content="on">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+{% endblock %}
+
+{% block open_graph %}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{{ request|absolute_url }}{% static 'website/images/logo.png' %}">
 {% endblock %}
 
 {% block favicons %}

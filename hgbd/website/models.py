@@ -239,6 +239,7 @@ class Service(models.Model, metaclass=TransMeta):
     IMAGE_PATH_MAIN_THUMB = 'service/images/main/thumb/'
     IMAGE_PATH_LIST = 'service/images/list/'
 
+    # TODO: slug doesn't support i18n for now
     slug = models.SlugField(editable=False)
 
     title = models.CharField('Заголовок', max_length=100)
@@ -278,7 +279,7 @@ class Service(models.Model, metaclass=TransMeta):
         verbose_name_plural = order_prefix + 'Сервіси'
 
         translate = (
-            'title', 'headline', 'description',
+            'title', 'description', 'headline',
             'about_label', 'about_description',
             'hint_title', 'hint_description',
         )
@@ -288,7 +289,8 @@ class Service(models.Model, metaclass=TransMeta):
 
     def save(self, *args, **kwargs):
         if self.title:
-            transliterated = translit(self.title, reversed=True)
+            # TODO: 'uk' parameter should be changed in case of extra locale
+            transliterated = translit(self.title, 'uk', reversed=True)
             self.slug = slugify(transliterated).replace('-', '_')
 
         super(Service, self).save(*args, **kwargs)
@@ -337,7 +339,10 @@ class ServiceList(models.Model, metaclass=TransMeta):
         return self.servicelistitem_set.all()
 
 
-# class ServiceListItem(models.Model, metaclass=TransMeta):
+# TODO: should find the way to bypass transmeta & nested_admin error
+# when translated field present in nested admin view. For now required
+# 'metaclass=TransMeta' is omitted in class declaration, as well as
+# 'translate' property in Meta class
 class ServiceListItem(models.Model):
     text = models.CharField('Опис пункту', max_length=500)
 
@@ -350,8 +355,6 @@ class ServiceListItem(models.Model):
 
         verbose_name = 'Пункт списку характеристик сервісу'
         verbose_name_plural = 'Пункти списку характеристик сервісу'
-
-        # translate = ('text', )
 
     def __str__(self):
         return self.text or self.__name__

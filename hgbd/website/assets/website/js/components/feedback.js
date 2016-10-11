@@ -34,6 +34,7 @@ class Feedback{
 
         sendFeedback(formAction, formData)
             .done((response) => {
+                response = JSON.parse(response);
                 
                 RESPONSE.html(`<p>${response.message}</p>`)
                         .addClass("active success");
@@ -42,7 +43,7 @@ class Feedback{
             })
             .fail((error) => {
                 error = JSON.parse(error.responseText);
-                
+
                 RESPONSE.html(`<p>${error.message}</p>`)
                         .addClass("active error");
             })

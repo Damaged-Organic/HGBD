@@ -10,6 +10,16 @@ register = template.Library()
 
 
 @register.filter
+def absolute_url(request):
+    return request.build_absolute_uri(reverse('website:index'))[:-1]
+
+
+@register.filter
+def sift_digits(value):
+    return ''.join(i for i in value if i.isdigit())
+
+
+@register.filter
 def interpolate_with_timeline(value, start_year):
     current_year = str(datetime.now().year)
 
@@ -32,16 +42,6 @@ def get_url_with_kwargs(request):
     url_kwargs = request.resolver_match.kwargs
 
     return reverse(url_name, None, None, url_kwargs)
-
-
-@register.filter
-def sift_digits(value):
-    return ''.join(i for i in value if i.isdigit())
-
-
-@register.filter
-def absolute_url(request):
-    return request.build_absolute_uri(reverse('website:index'))[:-1]
 
 
 @register.simple_tag()

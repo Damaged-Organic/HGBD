@@ -3,11 +3,40 @@
 {% load staticfiles i18n %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'website/css/notfound.bundle.min.css' %}">
 {% endblock %}
 
 {% block analytics %}{% endblock %}
 
 {% block body %}
-    {% block error_description %}{% endblock %}
-    {% block error_code %}{% endblock %}
+    <div id="page">
+        <main id="content">
+            <section class="container not-found-container">
+                <div id="logo-holder">
+                    <a href="{% url 'website:index' %}">
+                        <img src="{% static 'website//images/logo.png' %}" alt="HG Business Development logo">
+                    </a>
+                </div>
+                <div class="inner">
+                    <span class="square-holder"></span>
+                    <h1>{% block error_description %}{% endblock %}</h1>
+                    <p>
+
+                        {% blocktrans %}
+                            Тут нічого немає, будь ласка, повертайтесь додому</p>
+                        {% endblocktrans %}
+
+                    <div class="btn">
+                        <a href="{% url 'website:index' %}">{% trans 'Додому' %}</a>
+                    </div>
+                </div>
+                <div class="status-holder">
+                    <span class="lane"></span>
+                    <span class="status">
+                        {% block error_code %}{% endblock %}
+                    </span>
+                </div>
+            </section>
+        </main>
+    </div>
 {% endblock %}

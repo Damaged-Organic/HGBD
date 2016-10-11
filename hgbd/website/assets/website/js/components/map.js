@@ -32,7 +32,7 @@ class Map{
             position: { lat: 50.441149, lng: 30.522921 },
             map: this.map,
             icon: {
-                url: "build/images/marker.png",
+                url: "static/website/images/marker.png",
                 size: {
                     width: 24,
                     height: 24

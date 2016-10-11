@@ -34,7 +34,7 @@ class DefaultOrderingModelAdmin(admin.ModelAdmin):
 class HgbdAdminSite(admin.AdminSite):
     site_title = 'HG Business Development'
     site_header = 'HG Business Development'
-    index_title = 'HG Business Development - Управление Контентом'
+    index_title = 'HG Business Development - Керування контентом'
 
 admin_site = HgbdAdminSite(name='deus_ex_machina')
 

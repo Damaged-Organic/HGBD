@@ -2,8 +2,6 @@
 {% load i18n %}
 
 <form action="{% url 'website:cooperation_send' %}" method="POST" id="feedback-form" novalidate>
-    {% csrf_token %}
-
     <div id="response-holder" data-close-notify="клацніть щоб закрити"></div>
 
     <div class="field-holder">

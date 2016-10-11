@@ -2,7 +2,7 @@
 import time
 import json
 
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, SuspiciousOperation
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.shortcuts import (
@@ -93,7 +93,7 @@ def cooperation(request):
 
 
 def cooperation_send(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.is_ajax():
         form = CooperationForm(request.POST, request=request)
 
         if form.is_valid():
@@ -106,7 +106,7 @@ def cooperation_send(request):
             form.send_email()
         else:
             errors = get_form_errors(form, form.errors.items())
-
+            print(errors)
             message = _('При обробці форми виникли помилки')
             response = {
                 'data': {'errors': errors, 'message': message},
@@ -116,7 +116,8 @@ def cooperation_send(request):
         raise PermissionDenied
 
     '''
-    Artificial delay from considerations of performance and UX
+    Artificial delay from considerations of performance and UX - merely to
+    see loading widget at least for a second
     '''
     time.sleep(1)
 

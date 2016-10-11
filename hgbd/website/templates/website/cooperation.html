@@ -10,13 +10,13 @@
 {% block meta %}
     {{ block.super }}
     <meta name="Description" content="{{ METADATA.description }}">
-    <meta name=“robots” content="{{ METADATA.robots }}">
-    {# Open Graph #}
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="robots" content="{{ METADATA.robots }}">
+{% endblock %}
+
+{% block open_graph %}
+    {{ block.super }}
     <meta property="og:title" content="{{ METADATA.title }} | {% trans 'HG Business Development' noop %}">
     <meta property="og:description" content="{{ METADATA.description }}">
-    <meta property="og:image" content="{{ request|absolute_url }}{% static 'website/images/logo.jpg' %}">
 {% endblock %}
 
 {% block stylesheets %}
@@ -77,7 +77,9 @@
                         <p>
 
                             {% blocktrans %}
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a dignissim enim. Nullam blandit massa nec accumsan ornare. Sed eros risus, lobortis vitae felis et, dignissim pharetra purus
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Duis a dignissim enim. Nullam blandit massa nec accumsan ornare.
+                                Sed eros risus, lobortis vitae felis et, dignissim pharetra purus
                             {% endblocktrans %}
 
                         </p>
