@@ -33,6 +33,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
+    'website.middleware.security_headers_middleware.SecurityHeadersMiddleware',
 ]
 
 ROOT_URLCONF = 'hgbd.urls'
@@ -44,13 +45,18 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'website/templates'),
         ],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                ('django.template.loaders.cached.Loader', [
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ]),
             ],
         },
     },
@@ -66,7 +72,8 @@ DATABASES = {
         'NAME':   'hgbd',
         'OPTIONS': {
             'use_unicode': True,
-            'charset':     'utf8',
+            'charset': 'utf8',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }
@@ -130,9 +137,3 @@ X_FRAME_OPTIONS = 'DENY'
 
 BLEACH_ALLOWED_TAGS = ['span']
 BLEACH_STRIP_TAGS = True
-
-# Socials
-
-SOCIALS = {
-    # 'facebook': '',
-}

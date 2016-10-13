@@ -1,9 +1,8 @@
 # hgbd_project/hgbd/website/views.py
 import time
-import json
 
 from django.core.exceptions import PermissionDenied, SuspiciousOperation
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.utils.translation import ugettext as _
 from django.shortcuts import (
     render, get_object_or_404, get_list_or_404
@@ -121,8 +120,8 @@ def cooperation_send(request):
     '''
     time.sleep(1)
 
-    return HttpResponse(
-        json.dumps(response['data']), status=response['code']
+    return JsonResponse(
+        response['data'], status=response['code']
     )
 
 

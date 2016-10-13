@@ -24,12 +24,9 @@ gulp.task("css", () => {
 gulp.task("images", () => {
 
     gulp.src(cfg.images +"/**/*.*")
-        .pipe(imagemin({
-            optimizationLevel: 4,
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
-        }))
+        .pipe(imagemin([
+            pngquant()
+        ]))
         .pipe(gulp.dest(cfg.build +"/images/"));
 
 });
