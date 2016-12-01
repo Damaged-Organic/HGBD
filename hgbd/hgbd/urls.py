@@ -1,11 +1,11 @@
 # hgbd_project/hgbd/hgbd/urls.py
-from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls import (
     handler400, handler403, handler404, handler500
 )
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.conf import settings
 
 from django.contrib import admin
 

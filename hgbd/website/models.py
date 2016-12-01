@@ -1,7 +1,6 @@
 import re
 
 from django.db import models
-from django.utils.safestring import mark_safe
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 

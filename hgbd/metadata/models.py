@@ -11,7 +11,7 @@ class Metadata(models.Model, metaclass=TransMeta):
     robots = models.CharField('Інформація для ботів', max_length=100)
 
     class Meta:
-        verbose_name = 'Метаданные'
+        verbose_name = 'Метадані'
         verbose_name_plural = 'Метадані'
 
         translate = ('title', 'description',)
