@@ -240,7 +240,7 @@ class EmployeeAdmin(
         if db_fieldname == 'photo':
             field.help_text = escape(
                 """
-                Рекомендований розмір фотографії - 480x480 пікселів
+                Рекомендований розмір фотографії - 600x600 пікселів
                 """
             )
 

@@ -17,7 +17,7 @@ handler404 = 'website.views.handler404'
 handler500 = 'website.views.handler500'
 
 urlpatterns = [
-    url(r'^deus_ex_machina/', admin_site.urls),
+    url(r'^administration/', admin_site.urls),
     url(r'^nested_admin/', include('nested_admin.urls')),
 ]
 

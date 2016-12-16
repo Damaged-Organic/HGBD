@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nested_admin',
     'django_bleach',
+    'stdimage',
     'metadata.apps.MetadataConfig',
     'website.apps.WebsiteConfig',
 ]

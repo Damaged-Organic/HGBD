@@ -36,7 +36,7 @@ class HgbdAdminSite(admin.AdminSite):
     site_header = 'HG Business Development'
     index_title = 'HG Business Development - Керування контентом'
 
-admin_site = HgbdAdminSite(name='deus_ex_machina')
+admin_site = HgbdAdminSite(name='administration')
 
 
 @admin.register(Group, site=admin_site)

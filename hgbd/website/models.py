@@ -7,6 +7,8 @@ from django.utils.text import slugify
 from transmeta import TransMeta
 from transliterate import translit
 
+from stdimage.models import StdImageField
+
 """
 Hack to order models in Django Admin. Whitespaces assigned in nested Meta
 classes are concatenated with verbose_name_plural to force ordering by
@@ -206,7 +208,9 @@ class Employee(models.Model, metaclass=TransMeta):
     name = models.CharField('Імʼя', max_length=200)
     surname = models.CharField('Прізвище', max_length=200)
 
-    photo = models.ImageField('Фотографія', upload_to=PHOTO_PATH)
+    photo = StdImageField('Фотографія', upload_to=PHOTO_PATH, variations={
+        'thumbnail': {"width": 600, "crop": False}
+    })
 
     class Meta:
         db_table = get_table_name('employees')
@@ -226,7 +230,7 @@ class Employee(models.Model, metaclass=TransMeta):
         return "%s %s" % (self.name, self.surname)
 
     def photo_thumb(self):
-        return '<img src=\"%s\" width=\"400\">' % (self.photo.url)
+        return '<img src=\"%s\" width=\"400\">' % (self.photo.thumbnail.url)
     photo_thumb.allow_tags = True
     photo_thumb.short_description = 'Превʼю фотографії'
 
