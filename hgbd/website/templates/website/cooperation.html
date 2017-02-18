@@ -74,15 +74,8 @@
                     <div class="inner">
                         <span class="square-holder"></span>
                         <h2>{% trans 'Напишіть нам' %}</h2>
-                        <p>
 
-                            {% blocktrans %}
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis a dignissim enim. Nullam blandit massa nec accumsan ornare.
-                                Sed eros risus, lobortis vitae felis et, dignissim pharetra purus
-                            {% endblocktrans %}
-
-                        </p>
+                        {% paragraphize content.get_in_touch.text '<p>' '</p>' %}
 
                         {% include 'website/forms/cooperation.html' with form=form %}
 
