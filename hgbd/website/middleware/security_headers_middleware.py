@@ -28,6 +28,7 @@ class SecurityHeadersMiddleware(object):
                     "'self'"
                     " https://ajax.googleapis.com"
                     " https://maps.googleapis.com"
+                    " https://www.google-analytics.com"
                 ),
             }
 

@@ -31,9 +31,15 @@ gulp.task("images", () => {
 
 });
 
+gulp.task("inlines", () => {
+
+    gulp.src(cfg.js + "/inlines/*.js")
+        .pipe(gulp.dest(cfg.build + "/inlines/"));
+})
+
 gulp.task("watcher", () => {
     gulp.watch(cfg.css +"/**/*.less", ["css"]);
     gulp.watch(cfg.images +"/**/*.*", ["images"]);
 });
 
-gulp.task("default", ["css", "images"]);
+gulp.task("default", ["css", "images", "inlines"]);
