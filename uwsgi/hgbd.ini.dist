@@ -1,0 +1,25 @@
+[uwsgi]
+
+module = hgbd.wsgi
+
+chdir = /project/root/directory
+home =  /project/virtualenvs/directory
+
+master = true
+processes = 4
+
+max-requests = 1000
+
+socket = /tmp/hgbd.com.ua.sock
+stats = /tmp/hgbd.com.ua.stats.sock
+
+harakiri = 30
+
+vacuum = true
+
+disable-logging = True
+
+uid = www-data
+gid = www-data
+
+chmod-socket = 664

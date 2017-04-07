@@ -18,4 +18,5 @@ uploads/
 node_modules/
 jspm_packages/
 
-TLS/
+uwsgi/hgbd.ini
+uwsgi/uwsgi_params
